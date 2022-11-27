@@ -149,14 +149,17 @@
 
     .yellow {
       background-color: rgb(255, 255, 0);
+      color: black;
     }
 
     .purple {
       background-color: rgb(128, 0, 128);
+      color:white;
     }
 
     .cyan {
       background-color: rgb(0, 255, 255);
+      color:black;
     }
 
     .black {
@@ -253,10 +256,10 @@
           </button>
         </div>
         <div class="col-1">
-          <label for="levelMenu" id="levelLabel">Level</label>
+          <label for="levelMenu" id="levelLabel" class="text-left">Level</label>
         </div>
         <div class="col-1">
-          <select name="levels" id="qualLevel" onchange="qualLevelaspecto()">
+          <select name="levels" id="qualLevel" onchange="qualLevelaspecto()" class="text-right">
             <option value="1">1</option>
             <option value="2">2</option>
             <option value="3">3</option>
