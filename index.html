@@ -185,6 +185,14 @@
       color:rgb(255, 255, 255);
     }
 
+    .labelLevel{
+      display:inline-block;
+      width: 52px;
+      
+    }
+    .divLabel{
+      margin-bottom: 10px;
+    }
 
   </style>
 </head>
@@ -256,10 +264,10 @@
           </button>
         </div>
         <div class="col-2">
-          <label for="levelMenu" id="levelLabel" class="text-left">Level</label>
+          <label for="levelMenu" id="levelLabel" class="labelLevel" class="divlabel">Level</label>
         </div>
         <div class="col-2">
-          <select name="levels" id="qualLevel" onchange="qualLevelaspecto()" class="text-right">
+          <select name="levels" id="qualLevel" onchange="qualLevelaspecto()" class="divLabel">
             <option value="1">1</option>
             <option value="2">2</option>
             <option value="3">3</option>
