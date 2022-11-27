@@ -1,0 +1,678 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Find Colors</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" type="text/css">
+  <link rel="stylesheet" href="wireframe.css">
+  <style>
+    .button-82-pushable {
+      position: relative;
+      border: none;
+      background: transparent;
+      padding: 0;
+      cursor: pointer;
+      outline-offset: 4px;
+      transition: filter 250ms;
+      user-select: none;
+      -webkit-user-select: none;
+      touch-action: manipulation;
+    }
+
+    .button-82-shadow {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      border-radius: 12px;
+      background: hsl(0deg 0% 0% / 0.25);
+      will-change: transform;
+      transform: translateY(2px);
+      transition:
+        transform 600ms cubic-bezier(.3, .7, .4, 1);
+    }
+
+    .button-82-edge {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      border-radius: 12px;
+      background: linear-gradient(to left,
+        rgb(82, 0, 0) 0%,
+        rgb(163, 0, 0) 8%,
+        rgb(163, 0, 0) 92%,
+        rgb(82, 0, 0) 100%);
+    }
+
+    .button-82-front {
+      display: block;
+      position: relative;
+      padding: 12px 27px;
+      border-radius: 12px;
+      font-size: 1.1rem;
+      color: white;
+      background: rgb(240, 0, 0);
+      will-change: transform;
+      transform: translateY(-4px);
+      transition:
+        transform 600ms cubic-bezier(.3, .7, .4, 1);
+    }
+
+    @media (min-width: 768px) {
+      .button-82-front {
+        font-size: 1.25rem;
+        padding: 12px 42px;
+      }
+    }
+
+    .button-82-pushable:hover {
+      filter: brightness(110%);
+      -webkit-filter: brightness(110%);
+    }
+
+    .button-82-pushable:hover .button-82-front {
+      transform: translateY(-6px);
+      transition:
+        transform 250ms cubic-bezier(.3, .7, .4, 1.5);
+    }
+
+    .button-82-pushable:active .button-82-front {
+      transform: translateY(-2px);
+      transition: transform 34ms;
+    }
+
+    .button-82-pushable:hover .button-82-shadow {
+      transform: translateY(4px);
+      transition:
+        transform 250ms cubic-bezier(.3, .7, .4, 1.5);
+    }
+
+    .button-82-pushable:active .button-82-shadow {
+      transform: translateY(1px);
+      transition: transform 34ms;
+    }
+
+    .button-82-pushable:focus:not(:focus-visible) {
+      outline: none;
+    }
+
+    .grid-container {
+      display: grid;
+      grid: auto / auto auto auto auto auto;
+      grid-gap: 20px;
+      background-color: rgb(102, 95, 92);
+      padding: 20px;
+      color: #fff1a2;
+      font-size: 30px;
+      text-align: center;
+    }
+
+    .grid-item {
+      background-color: #000000cc;
+      padding: 10px
+    }
+
+    .grid-yellow {
+      display: grid;
+      grid: auto / auto;
+      grid-gap: 30px;
+      background-color: rgb(255, 255, 0);
+      padding: 30px;
+      font-size: 30px;
+      text-align: center;
+    }
+
+    .grid-purple {
+      display: grid;
+      grid: auto / auto;
+      grid-gap: 30px;
+      background-color: rgb(128, 0, 128);
+      padding: 30px;
+      font-size: 30px;
+      text-align: center;
+    }
+
+    .grid-cyan {
+      display: grid;
+      grid: auto / auto;
+      grid-gap: 30px;
+      background-color: rgb(0, 255, 255);
+      padding: 30px;
+      font-size: 30px;
+      text-align: center;
+    }
+
+    .yellow {
+      background-color: rgb(255, 255, 0);
+    }
+
+    .purple {
+      background-color: rgb(128, 0, 128);
+    }
+
+    .cyan {
+      background-color: rgb(0, 255, 255);
+    }
+
+    .black {
+      background-color: black;
+    }
+
+    .imgautoadjust {
+      width: 10%;
+      height: auto;
+    }
+
+    .imgautoadjust2 {
+      width: 5%;
+      height: auto;
+    }
+
+    #seconds, #tens{
+      font-size:2em;
+      color:rgb(255, 255, 255);
+    }
+    .doispontos{
+      font-size:2em;
+      color:rgb(255, 255, 255);
+    }
+
+
+  </style>
+</head>
+
+<body class="text-center bg-dark">
+  <div class="p-3 h-100 d-flex flex-column bg-light" style="	background-image: linear-gradient(to bottom, rgba(100, 100, 255, 1), rgba(255, 255, 255, 1));	background-position: top left;	background-size: 100%;	background-repeat: repeat;">
+    <div class="container mb-auto">
+      <div class="row">
+        <div class="mx-auto col-md-9">
+          <h1 class="text-light text-center" ><strong>Find the Colors</strong></h1>
+        </div>
+      </div>
+    </div>
+    <div class="container mb-auto">
+      <div class="row">
+        <div class="col-md-12 mx-auto">
+          <p class="lead">Exercise your brain with simple exercise, boost your memory and improve concentration! <br> <p><strong><span id="seconds">00</span><span class="doispontos">:</span><span id="tens">00</span></strong></p></p>
+          <div class="row">
+            <div class="col-md-12 mx-auto">
+              <div class="grid-container" id="myDIV">
+                <div class="grid-item" id="11">11</div>
+                <div class="grid-item" id="12">12</div>
+                <div class="grid-item" id="13">13</div>
+                <div class="grid-item" id="14">14</div>
+                <div class="grid-item" id="15">15</div>
+                <div class="grid-item" id="21">21</div>
+                <div class="grid-item" id="22">22</div>
+                <div class="grid-item" id="23">23</div>
+                <div class="grid-item" id="24">24</div>
+                <div class="grid-item" id="25">25</div>
+                <div class="grid-item" id="31">31</div>
+                <div class="grid-item" id="32">32</div>
+                <div class="grid-item" id="33">33</div>
+                <div class="grid-item" id="34">34</div>
+                <div class="grid-item" id="35">35</div>
+                <div class="grid-item" id="41">41</div>
+                <div class="grid-item" id="42">42</div>
+                <div class="grid-item" id="43">43</div>
+                <div class="grid-item" id="44">44</div>
+                <div class="grid-item" id="45">45</div>
+                <div class="grid-item" id="51">51</div>
+                <div class="grid-item" id="52">52</div>
+                <div class="grid-item" id="53">53</div>
+                <div class="grid-item" id="54">54</div>
+                <div class="grid-item" id="55">55</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="container mb-auto">
+      <div class="row">
+        <div class="col-10">
+          <button class="button-82-pushable" role="button" href="#" onclick="myFunction()" id="botaonext">
+            <span class="button-82-shadow"></span>
+            <span class="button-82-edge"></span>
+            <span class="button-82-front text"> > </span>
+          </button>
+          <button class="button-82-pushable" role="button" href="#" onclick="confere(lvl)" id="botaoresultado">
+            <span class="button-82-shadow"></span>
+            <span class="button-82-edge"></span>
+            <span class="button-82-front text"> = </span>
+          </button>
+          <button class="button-82-pushable" role="button" href="#" onclick="restartFunction()" id="botaorestart">
+            <span class="button-82-shadow"></span>
+            <span class="button-82-edge"></span>
+            <span class="button-82-front text"> # </span>
+          </button>
+        </div>
+        <div class="col-1">
+          <label for="levelMenu" id="levelLabel">Level</label>
+        </div>
+        <div class="col-1">
+          <select name="levels" id="qualLevel" onchange="qualLevelaspecto()">
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+          </select>
+        </div>
+      </div>
+    </div>
+    <div class="container mb-auto">
+        <div class="row">
+          <div class="col-2">
+            <div class="grid-yellow" class="text-center"></div>           
+          </div>
+          <div class="col-10">
+            <h3 id="Mensagem" class="text-left"></h3>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-2">
+            <div class="grid-purple" id="gPurple" class="text-center"></div>           
+          </div>
+          <div class="col-10">
+            <h3 id="Mensagem2" class="text-left"></h3>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-2">
+            <div class="grid-cyan" id="gCyan" class="text-center"></div>           
+          </div>
+          <div class="col-10">
+            <h3 id="Mensagem3" class="text-left"></h3>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous" style=""></script>
+  <script>
+    var posicao;
+    var posicao2;
+    var posicao3;
+    var passos = 1;
+    var rows = 0;
+    var columns = 0;
+    let resultadolvl1 = '';
+    let resultadolvl2 = '';
+    let resultadolvl3 = '';
+    let lvl = 1;
+    var contamarelo = 0;
+    var controxo = 0;
+    var contcyan = 0;
+    const divs = document.querySelectorAll(".grid-item");
+    const botaonext = document.getElementById('botaonext');
+    var rightarrow = '<img src="rightarrow.png" class="imgautoadjust" width="72" height="77">';
+    var uparrow = '<img src="uparrow.png" class="imgautoadjust" width="72" height="77">';
+    var leftarrow = '<img src="leftarrow.png" class="imgautoadjust" width="72" height="77">';
+    var downarrow = '<img src="downarrow.png" class="imgautoadjust" width="72" height="77">';
+    var certo =  '<img src="certo.png" class="imgautoadjust" width="70" height="88">';
+    var errado = '<img src="errado.png" class="imgautoadjust" width="99" height="101">';
+    var interrogacao = '<img src="interrogacao.png" class="imgautoadjust2" width="76" height="137">'
+
+    //declaração do cronometro
+    var seconds; 
+    var tens; 
+    var appendTens = document.getElementById("tens")
+    var appendSeconds = document.getElementById("seconds")
+    var Interval ;
+
+    window.onload = startFunction();
+
+    function qualLevelaspecto() {
+      document.getElementById("levelLabel").innerHTML ='Level';
+      if (document.getElementById("qualLevel").value == 1) {
+        document.getElementById("gPurple").style.display = 'none';
+        document.getElementById("Mensagem2").style.display = 'none';
+        document.getElementById("15").classList.remove('purple');
+        document.getElementById("gCyan").style.display = 'none';
+        document.getElementById("Mensagem3").style.display = 'none';
+        document.getElementById("51").classList.remove('cyan');
+      } else if (document.getElementById("qualLevel").value == 2) {
+        document.getElementById("Mensagem2").style.display = 'block';
+        document.getElementById("gPurple").style.display = 'block';
+        document.getElementById("15").classList.add('purple');
+        document.getElementById("gCyan").style.display = 'none';
+        document.getElementById("Mensagem3").style.display = 'none';
+        document.getElementById("51").classList.remove('cyan');
+      } else if (document.getElementById("qualLevel").value == 3) {
+        document.getElementById("Mensagem2").style.display = 'block';
+        document.getElementById("gPurple").style.display = 'block';
+        document.getElementById("15").classList.add('purple');
+        document.getElementById("Mensagem3").style.display = 'block';
+        document.getElementById("gCyan").style.display = 'block';
+        document.getElementById("51").classList.add('cyan');
+      }
+    }
+    
+    function startFunction() {
+      botaonext.style.display = 'block';
+      botaoresultado.style.display = 'none';
+      botaorestart.style.display = 'none';
+      document.getElementById("qualLevel").style.display = 'block'
+      qualLevelaspecto();
+      document.getElementById("11").classList.add('yellow');
+      posicao = 11;
+      posicao2 = 15;
+      posicao3 = 51;
+      passos = 0;
+      rows = 0;
+      columns = 0;
+      resultadolvl1 = '';
+      resultadolvl2 = '';
+      resultadolvl3 = '';
+      contamarelo = 0;
+      controxo = 0;
+      contcyan = 0;
+      lvl = 0;
+      Mensagem.innerHTML = "";
+      Mensagem2.innerHTML = "";
+      Mensagem3.innerHTML = "";
+      seconds = 00; 
+      tens = 00; 
+      cronoReset();
+    }
+
+    function myFunction() {
+      cronoStart();
+      passos++;
+      if (passos == 1) {
+        rows = getGridData(myDIV).gridRowCount;
+        columns = getGridData(myDIV).gridColumnCount;
+        document.getElementById("myDIV").style.display = 'none';
+        lvl = document.getElementById("qualLevel").value;
+        document.getElementById("qualLevel").style.display = 'none';
+        document.getElementById("levelLabel").innerHTML = "Level " + lvl;
+      }
+      if (passos < 8) {
+        switch (lvl) {
+          case "1":
+            posicao = novaposicao(posicao, 1);
+            break;
+          case "2":
+            posicao = novaposicao(posicao, 1);
+            posicao2 = novaposicao(posicao2, 2);
+            break;
+          case "3":
+            posicao = novaposicao(posicao, 1);
+            posicao2 = novaposicao(posicao2, 2);
+            posicao3 = novaposicao(posicao3, 3);
+            break;
+        }
+      }
+      if (passos == 8) {
+        Mensagem.innerHTML = '';
+        Mensagem2.innerHTML = '';
+        Mensagem3.innerHTML = '';
+        document.getElementById("myDIV").style.display = 'grid';
+        document.getElementById("11").classList.remove('yellow');
+        document.getElementById("15").classList.remove('purple');
+        document.getElementById("51").classList.remove('cyan');
+        botaonext.style.display = 'none';
+        botaoresultado.style.display = 'block';
+        Mensagem.innerHTML = interrogacao;
+        if (lvl == 2 ){
+          Mensagem2.innerHTML = interrogacao;
+        }
+        else if(lvl == 3){
+          Mensagem2.innerHTML = interrogacao;
+          Mensagem3.innerHTML = interrogacao;
+        }
+        for (i = 0;i < divs.length; i++){
+          divs[i].addEventListener("click", classToggler);
+        }
+      }
+    }
+
+    function confere() {
+      cronoStop();
+      botaoresultado.style.display = 'none';
+      botaorestart.style.display = 'block';
+      yellows = document.querySelectorAll(".yellow");
+      if (yellows.length == 0){
+        Mensagem.innerHTML = "Click on a box";
+        confere();
+      }
+      yellowvalue = yellows.item(0).childNodes[0].nodeValue;
+      if (yellows.length == 1) {
+        if (yellowvalue == posicao) {
+          Mensagem.innerHTML = resultadolvl1 + ' ' + certo;
+        } else {
+          Mensagem.innerHTML = resultadolvl1 + ' ' + errado + posicao;
+        }
+      }
+      if (lvl > 1) {
+        purples = document.querySelectorAll(".purple");
+        purplevalue = purples.item(0).childNodes[0].nodeValue;
+        if (purples.length == 1) {
+          if (purplevalue == posicao2) {
+            Mensagem2.innerHTML = resultadolvl2 + ' ' + certo;
+          } else {
+            Mensagem2.innerHTML = resultadolvl2 + ' ' + errado + posicao2;
+          }
+        }
+      }
+      if (lvl > 2) {
+        cyans = document.querySelectorAll(".cyan");
+        cyanvalue = cyans.item(0).childNodes[0].nodeValue;
+        if (cyans.length == 1) {
+          if (cyanvalue == posicao3) {
+            Mensagem3.innerHTML = resultadolvl3 + ' ' + certo;
+          } else {
+            Mensagem3.innerHTML = resultadolvl3 + ' ' + errado + posicao3;
+          }
+        }
+      }
+
+    }
+
+    function cadeiaResultado(auxcadeia, auxestrela) {
+      switch (auxestrela) {
+        case 1:
+          resultadolvl1 = resultadolvl1 + auxcadeia;
+          for (i = 0; i < passos; i++) {
+            if (i == 0) {
+              Mensagem.innerHTML = "";
+            }
+            Mensagem.innerHTML = Mensagem.innerHTML + '&emsp;';
+          }
+          Mensagem.innerHTML = Mensagem.innerHTML + auxcadeia;
+          break;
+        case 2:
+          resultadolvl2 = resultadolvl2 + auxcadeia;
+          for (i = 0; i < passos; i++) {
+            if (i == 0) {
+              Mensagem2.innerHTML = "";
+            }
+            Mensagem2.innerHTML = Mensagem2.innerHTML + '&emsp;';
+          }
+          Mensagem2.innerHTML = Mensagem2.innerHTML + auxcadeia;
+          break;
+          case 3:
+          resultadolvl3 = resultadolvl3 + auxcadeia;
+          for (i = 0; i < passos; i++) {
+            if (i == 0) {
+              Mensagem3.innerHTML = "";
+            }
+            Mensagem3.innerHTML = Mensagem3.innerHTML + '&emsp;';
+          }
+          Mensagem3.innerHTML = Mensagem3.innerHTML + auxcadeia;
+          break;
+      }
+    }
+
+    function novaposicao(auxposicao, auxestrela) {
+      var sucesso = 0;
+      var direcao = 0;
+      var dentroDaTabela;
+      var arrow;
+      var resulposicao;
+      while (sucesso == 0) {
+        dentroDaTabela = 0;
+        direcao = random(1, 4)
+        if (direcao == 1) {
+          if (estaDentroDaTabela(auxposicao - 1) == "sim") {
+            dentroDaTabela = 1;
+            arrow = leftarrow;
+            resulposicao = auxposicao - 1;
+          }
+        }
+        if (direcao == 2) {
+          if (estaDentroDaTabela(auxposicao - 10) == "sim") {
+            dentroDaTabela = 1;
+            arrow = uparrow;
+            resulposicao = auxposicao - 10;
+          }
+        }
+        if (direcao == 3) {
+          if (estaDentroDaTabela(auxposicao + 1) == "sim") {
+            dentroDaTabela = 1;
+            arrow = rightarrow;
+            resulposicao = auxposicao + 1;
+          }
+        }
+        if (direcao == 4) {
+          if (estaDentroDaTabela(auxposicao + 10) == "sim") {
+            dentroDaTabela = 1;
+            arrow = downarrow;
+            resulposicao = auxposicao + 10;
+          }
+        }
+        if (dentroDaTabela == 1){
+          if(auxestrela == 1){
+            if ((resulposicao != posicao2) && (resulposicao != posicao3)){
+              cadeiaResultado(arrow, auxestrela);
+              return (resulposicao);
+            }
+          }
+          if (auxestrela == 2){
+            if ((resulposicao != posicao) && (resulposicao != posicao3)){
+              cadeiaResultado(arrow, auxestrela);
+              return (resulposicao);
+            }
+          }
+          if (auxestrela == 3){
+            if ((resulposicao != posicao) && (resulposicao != posicao2)){
+              cadeiaResultado(arrow, auxestrela);
+              return (resulposicao);
+            }
+          }
+        }
+      }
+    }
+
+    function estaDentroDaTabela(novaposicao) {
+      dezena = parseInt(novaposicao / 10)
+      unidade = novaposicao - (dezena * 10)
+      if ((dezena > 0) && (dezena <= columns) && (unidade > 0) && (unidade <= rows)) {
+        return "sim"
+      }
+      return "nao"
+    }
+
+    function random(min, max) {
+      return Math.floor(Math.random() * (max - min + 1)) + min;
+    }
+
+    function getGridData(tabela) {
+      // calc computed style
+      const gridComputedStyle = window.getComputedStyle(tabela);
+      return {
+        // get number of grid rows
+        gridRowCount: gridComputedStyle.getPropertyValue("grid-template-rows").split(" ").length,
+        // get number of grid columns
+        gridColumnCount: gridComputedStyle.getPropertyValue("grid-template-columns").split(" ").length,
+        // get grid row sizes
+      }
+    }
+
+    function classToggler() {
+      if ((contamarelo == 0) && (this.classList.value == "grid-item")) {
+        this.classList.add("yellow");
+        contamarelo++;
+      } else if (this.classList.value == "grid-item yellow") {
+        this.classList.remove("yellow");
+        contamarelo--;
+      } else if ((controxo == 0) && (lvl > 1) && (this.classList.value == "grid-item")) {
+        this.classList.add("purple");
+        controxo++;
+      } else if ((this.classList.value == "grid-item purple") && (lvl > 1)) {
+        this.classList.remove("purple");
+        controxo--;
+      } else if ((contcyan == 0) && (lvl > 2) && (this.classList.value == "grid-item")) {
+        this.classList.add("cyan");
+        contcyan++;
+      } else if ((this.classList.value == "grid-item cyan") && (lvl > 2)) {
+        this.classList.remove("cyan");
+        contcyan--;
+      }
+    }
+
+    function restartFunction(){
+      amarelos = document.querySelectorAll(".yellow");
+      for (i = 0;i < amarelos.length; i++){
+        amarelos[i].classList.remove("yellow");
+      }
+      roxos = document.querySelectorAll(".purple");
+      for (i = 0;i < roxos.length; i++){
+        roxos[i].classList.remove("purple");
+      }
+      cyan = document.querySelectorAll(".cyan");
+      for (i = 0;i < cyan.length; i++){
+        cyan[i].classList.remove("cyan");
+      }
+      for (i = 0;i < divs.length; i++){
+        divs[i].removeEventListener("click", classToggler);
+      }
+      startFunction();
+    }
+
+    function cronoStart() {
+      clearInterval(Interval);
+      Interval = setInterval(startTimer, 10);
+    }
+  
+    function cronoStop() {
+      clearInterval(Interval);
+    }
+  
+    function cronoReset() {
+      clearInterval(Interval);
+      tens = "00";
+  	  seconds = "00";
+      appendTens.innerHTML = tens;
+  	  appendSeconds.innerHTML = seconds;
+    }
+  
+    function startTimer () {
+      tens++; 
+      if(tens <= 9){
+        appendTens.innerHTML = "0" + tens;
+      }
+      if (tens > 9){
+        appendTens.innerHTML = tens;
+      } 
+      if (tens > 99) {
+        console.log("seconds");
+        seconds++;
+        appendSeconds.innerHTML = "0" + seconds;
+        tens = 0;
+        appendTens.innerHTML = "0" + 0;
+      }
+      if (seconds > 9){
+        appendSeconds.innerHTML = seconds;
+      }
+    }
+</script>
+</body>
+
+</html>
