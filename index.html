@@ -7,6 +7,7 @@
   <title>Find the Colors</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" type="text/css">
   <link rel="stylesheet" href="wireframe.css">
+  <script src="https://api.countapi.xyz/hit/findthecolors.github.io/visits?callback=ftcViews" async></script>
   <style>
     .button-82-pushable {
       position: relative;
@@ -235,6 +236,11 @@
       height: auto;
     }
 
+    .imgautoadjust4 {
+      width: 20%;
+      height: auto;
+    }
+
     #seconds, #tens{
       font-size:2em;
       color:rgb(255, 255, 255);
@@ -249,8 +255,13 @@
       width: 52px;
       
     }
+
     .divLabel{
       margin-bottom: 10px;
+    }
+
+    .viewsColor{
+      color:rgb(200, 200, 200);
     }
 
   </style>
@@ -268,7 +279,7 @@
     <div class="container mb-auto">
       <div class="row">
         <div class="col-md-12 mx-auto">
-          <p class="lead">Exercise your brain with simple exercise<br> <p><strong><span id="seconds">00</span><span class="doispontos">:</span><span id="tens">00</span></strong></p></p>
+          <p class="lead" id="corpoMensagem">Exercise your brain with simple exercise, guess where the color(s) will be.<br></p> <p><strong><span id="seconds">00</span><span class="doispontos">:</span><span id="tens">00</span></strong></p>
           <div class="row">
             <div class="col-md-12 mx-auto">
               <div class="grid-container" id="myDIV">
@@ -359,6 +370,13 @@
             <h3 id="Mensagem3" class="text-left"></h3>
           </div>
         </div>
+        <div class="row">
+          <div class="col-11">
+          </div>
+          <div class="col-1">
+            <div id="visits" class="viewsColor"></div>
+            </div>
+        </div>
       </div>
     </div>
   </div>
@@ -387,7 +405,12 @@
     var downarrow = '<img src="downarrow.png" class="imgautoadjust" width="72" height="77">';
     var certo =  '<img src="certo.png" class="imgautoadjust" width="70" height="88">';
     var errado = '<img src="errado.png" class="imgautoadjust" width="99" height="101">';
-    var interrogacao = '<img src="interrogacao.png" class="imgautoadjust2" width="76" height="137">'
+    var interrogacao = '<img src="interrogacao.png" class="imgautoadjust2" width="76" height="137">';
+    var ramarelo =  '<img src="amarelo.png" class="imgautoadjust4" width="156" height="73">';
+    var rroxo =  '<img src="roxo.png" class="imgautoadjust4" width="156" height="73">';
+    var rcyan =  '<img src="cyan.png" class="imgautoadjust4" width="156" height="73">';
+
+
 
     //declaração do cronometro
     var seconds; 
@@ -425,6 +448,7 @@
     }
     
     function startFunction() {
+      document.getElementById("corpoMensagem").innerHTML = "Exercise your brain with simple exercise, guess where the color(s) will be.";
       botaonext.style.display = 'block';
       botaoresultado.style.display = 'none';
       botaorestart.style.display = 'none';
@@ -456,6 +480,7 @@
       cronoStart();
       passos++;
       if (passos == 1) {
+        document.getElementById("corpoMensagem").innerHTML ='';
         rows = getGridData(myDIV).gridRowCount;
         columns = getGridData(myDIV).gridColumnCount;
         document.getElementById("myDIV").style.display = 'none';
@@ -480,6 +505,7 @@
         }
       }
       if (passos == 8) {
+        document.getElementById("corpoMensagem").innerHTML ='Click on the box where the color must be';
         Mensagem.innerHTML = '';
         Mensagem2.innerHTML = '';
         Mensagem3.innerHTML = '';
@@ -504,6 +530,7 @@
     }
 
     function confere() {
+      var answer;
       cronoStop();
       botaoresultado.style.display = 'none';
       botaorestart.style.display = 'block';
@@ -515,9 +542,11 @@
       yellowvalue = yellows.item(0).childNodes[0].nodeValue;
       if (yellows.length == 1) {
         if (yellowvalue == posicao) {
-          Mensagem.innerHTML = resultadolvl1 + ' ' + certo;
+          Mensagem.innerHTML = resultadolvl1;
+          answer = ramarelo + '&emsp;' + certo +  '&emsp;' + "Right!" + "<br>";
         } else {
-          Mensagem.innerHTML = resultadolvl1 + ' ' + errado + posicao;
+          Mensagem.innerHTML = resultadolvl1;
+          answer = ramarelo + '&emsp;' + errado + '&emsp;' +  'Wrong!, right answer is: '+ ' ' + posicao + "<br>";
         }
       }
       if (lvl > 1) {
@@ -525,9 +554,11 @@
         purplevalue = purples.item(0).childNodes[0].nodeValue;
         if (purples.length == 1) {
           if (purplevalue == posicao2) {
-            Mensagem2.innerHTML = resultadolvl2 + ' ' + certo;
+            Mensagem2.innerHTML = resultadolvl2;
+            answer = answer + rroxo + '&emsp;' + certo +  '&emsp;' + "Right!" + "<br>";
           } else {
-            Mensagem2.innerHTML = resultadolvl2 + ' ' + errado + posicao2;
+            Mensagem2.innerHTML = resultadolvl2;
+            answer = answer + rroxo + '&emsp;' + errado + '&emsp;' +  'Wrong!, right answer is: '+ ' ' + posicao2 + "<br>";
           }
         }
       }
@@ -536,13 +567,15 @@
         cyanvalue = cyans.item(0).childNodes[0].nodeValue;
         if (cyans.length == 1) {
           if (cyanvalue == posicao3) {
-            Mensagem3.innerHTML = resultadolvl3 + ' ' + certo;
+            Mensagem3.innerHTML = resultadolvl3 ;
+            answer = answer + rcyan + '&emsp;' + certo + '&emsp;' + "Right!" + "<br>";
           } else {
-            Mensagem3.innerHTML = resultadolvl3 + ' ' + errado + posicao3;
+            Mensagem3.innerHTML = resultadolvl3;
+            answer = answer + rcyan + '&emsp;' + errado + '&emsp;' +  'Wrong!, right answer is: '+ ' ' + posicao3 ;
           }
         }
       }
-
+      document.getElementById("corpoMensagem").innerHTML = answer;
     }
 
     function cadeiaResultado(auxcadeia, auxestrela) {
@@ -741,6 +774,10 @@
       if (seconds > 9){
         appendSeconds.innerHTML = seconds;
       }
+    }
+
+    function ftcViews(response) {
+      document.getElementById('visits').innerText = response.value;
     }
 </script>
 </body>
