@@ -1,0 +1,1 @@
+Lucro 3823.9999999999977 sinalcompra: 0.02 sinalvenda 1.04 valormedio carteira 3833.4000000000005 carteira tamanho: 5 capitalmax: 3313.84 negocios: 516
