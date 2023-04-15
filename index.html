@@ -533,8 +533,7 @@
         document.getElementById("gBrown").style.display = 'none';
         document.getElementById("Mensagem5").style.display = 'none';
         document.getElementById("33").classList.remove('brown');
-      }
-      else if (document.getElementById("qualLevel").value == 5) {
+      }else if (document.getElementById("qualLevel").value == 5) {
         document.getElementById("Mensagem2").style.display = 'block';
         document.getElementById("gPurple").style.display = 'block';
         document.getElementById("15").classList.add('purple');
@@ -546,7 +545,7 @@
         document.getElementById("55").classList.add('green');
         document.getElementById("gBrown").style.display = 'block';
         document.getElementById("Mensagem5").style.display = 'block';
-        document.getElementById("33").classList.remove('brown');
+        document.getElementById("33").classList.add('brown');
       }
       
     }
@@ -724,7 +723,7 @@
             answer = answer + rgreen + '&emsp;' + certo + '&emsp;' + "Right!" + "<br>";
           } else {
             Mensagem4.innerHTML = resultadolvl4;
-            answer = answer + rgreen + '&emsp;' + errado + '&emsp;' +  'Wrong!, right answer is: '+ ' ' + posicao4 ;
+            answer = answer + rgreen + '&emsp;' + errado + '&emsp;' +  'Wrong!, right answer is: '+ ' ' + posicao4 + "<br>";
           }
         }
       }
@@ -857,6 +856,12 @@
           }
           if (auxestrela == 4){
             if ((resulposicao != posicao) && (resulposicao != posicao2) && (resulposicao != posicao3) && (resulposicao != posicao5)){
+              cadeiaResultado(arrow, auxestrela);
+              return (resulposicao);
+            }
+          }
+          if (auxestrela == 5){
+            if ((resulposicao != posicao) && (resulposicao != posicao2) && (resulposicao != posicao3) && (resulposicao != posicao4)){
               cadeiaResultado(arrow, auxestrela);
               return (resulposicao);
             }
