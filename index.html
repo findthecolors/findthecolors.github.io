@@ -101,6 +101,7 @@
 	let letraaleatoria;
     let vetorpalavras = "";
 	var pontointermediario2 = 1;
+    let contador = 0;
 		
 	window.onload = startFunction();
     //gerando número aletório entre min e max
@@ -124,6 +125,7 @@
 	  letraaleatoria=0;
 	  vetorpalavras = "";
 	  pontointermediario2 = 1;
+      contador = 0;
 	}
 		
 	function restartFunction(){
@@ -1478,7 +1480,7 @@ e defende a causa do pobre e do indigente.`
 	
 
 	let tamanho = proverbs.length;
-	tamanho = tamanho - 1;
+    tamanho = tamanho - 510;
 	letraaleatoria = getRandomInt(0,tamanho);
 	for (let i = letraaleatoria; i < tamanho; i++) {
 		if (i == letraaleatoria && proverbs.charAt(i) == "."){
@@ -1497,32 +1499,37 @@ e defende a causa do pobre e do indigente.`
 			}
 		}
 	}
-	
-	for (let k = ponto1 + 1; k <= ponto2;k++){
-		frase = frase + proverbs.charAt(k);
-	}
 	pontointermediario = ponto1 +1;
 	myTxtProx();
     
 }
 
 	function myTxtProx(){
+    
 		let palavra = "";
-		while(proverbs.charAt(pontointermediario) != "."){
-				if (proverbs.charAt(pontointermediario) != " " && proverbs.charAt(pontointermediario) != "," && proverbs.charAt(pontointermediario) != ";"){
+		while(true){
+				if (proverbs.charAt(pontointermediario) != " " && proverbs.charAt(pontointermediario) != "," && proverbs.charAt(pontointermediario) != ";" && proverbs.charAt(pontointermediario) != "."){
 					palavra = palavra + proverbs.charAt(pontointermediario);
+                    frase = frase + proverbs.charAt(pontointermediario);
 					pontointermediario = pontointermediario + 1 ;
 				}
-				else{
-					pontointermediario = pontointermediario + 1 ;
-					break;
+				else if (proverbs.charAt(pontointermediario) == ".") {
+                	palavra = palavra + proverbs.charAt(pontointermediario);
+                    frase = frase + proverbs.charAt(pontointermediario);
+                    pontointermediario = pontointermediario + 1 ;
+                    contador = contador + 1;
+                    break;
 				}
-		}
-		
+                else {
+                	frase = frase + proverbs.charAt(pontointermediario);
+                	pontointermediario = pontointermediario + 1 ;
+                    break;
+                }
+        }
 		document.getElementById("aqui").innerHTML = palavra;
 		setTimeout(() => {  document.getElementById("aqui").innerHTML = ""; }, 600);
 		
-		if (proverbs.charAt(pontointermediario) == "."){
+		if (contador == 2){ //contador é quantas frases entre pontos vai mostrar
 				botaotxt.style.display = 'none';
 				botaotxtprox.style.display = 'none';
 				botaotxtresul.style.display = 'block';
