@@ -64,7 +64,7 @@
 
 <body>
     <div class="row">
-        <h1 class="myTitulo" id="aqui2" ><strong>Exercícios</strong></h1>
+        <h1 class="myTitulo" id="aqui2" ><strong></strong></h1>
     </div>
     <div class="row">
       <div class= "myCorpo" id="aqui"><b></b>
@@ -87,8 +87,14 @@
             </button>
         </div>
       </div>
+      </div>
+       <div class="none">
+       <form>
+      	<label for="username" id="labelVelocidade">Velocidade em ms:</label>
+  		<input type="number" id="inputVelocidade" value=600>
+        </form>
+      </div>
     
-    </div>
 </div>
   
   <script>
@@ -102,6 +108,7 @@
     let vetorpalavras = "";
 	var pontointermediario2 = 1;
     let contador = 0;
+    let velocidade = 0;
 		
 	window.onload = startFunction();
     //gerando número aletório entre min e max
@@ -118,6 +125,8 @@
 	  botaotxtprox.style.display = 'none';
       botaotxtresul.style.display = 'none';
 	  botaorestart3.style.display = 'none';
+      labelVelocidade.style.display = 'block';
+      inputVelocidade.style.display = 'block';
       frase = "";
 	  ponto1 = -1;
 	  ponto2 = -1;
@@ -126,18 +135,23 @@
 	  vetorpalavras = "";
 	  pontointermediario2 = 1;
       contador = 0;
+      
 	}
 		
 	function restartFunction(){
       startFunction();
     }
+    
 	
     function myTxt(){
 		botaotxt.style.display = 'none';
-		botaotxtprox.style.display = 'block';
+		botaotxtprox.style.display = 'none';
 		botaotxtresul.style.display = 'none';
 		botaorestart3.style.display = 'none';
-        
+        labelVelocidade.style.display = 'none';
+        inputVelocidade.style.display = 'none';
+        velocidade = parseInt(document.getElementById("inputVelocidade").value, 10);
+        document.getElementById("aqui2").innerHTML = `Velocidade: ${velocidade }`;
 		
         proverbs = `.Provérbios de Salomão, filho de David, rei de Israel.
  para conhecer sabedoria e educação,
@@ -1500,13 +1514,24 @@ e defende a causa do pobre e do indigente.`
 		}
 	}
 	pontointermediario = ponto1 +1;
-	myTxtProx();
-    
+    delayedExecution();
 }
+	function delay(ms) {
+    	return new Promise(resolve => setTimeout(resolve, ms));
+	}
+
+	async function delayedExecution() {
+    	while (contador != 2){
+        	myTxtProx();
+        	await delay(velocidade); // Wait for velocidade miliseconds
+        }
+        
+    }
+	
+
 
 	function myTxtProx(){
-    
-		let palavra = "";
+    	let palavra = "";
 		while(true){
 				if (proverbs.charAt(pontointermediario) != " " && proverbs.charAt(pontointermediario) != "," && proverbs.charAt(pontointermediario) != ";" && proverbs.charAt(pontointermediario) != "."){
 					palavra = palavra + proverbs.charAt(pontointermediario);
@@ -1527,8 +1552,6 @@ e defende a causa do pobre e do indigente.`
                 }
         }
 		document.getElementById("aqui").innerHTML = palavra;
-		setTimeout(() => {  document.getElementById("aqui").innerHTML = ""; }, 600);
-		
 		if (contador == 2){ //contador é quantas frases entre pontos vai mostrar
 				botaotxt.style.display = 'none';
 				botaotxtprox.style.display = 'none';
