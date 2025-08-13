@@ -140,13 +140,19 @@
             font-size: 1.8em;
         }
         
+        .table-container {
+            overflow-x: auto;
+            -webkit-overflow-scrolling: touch;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            background: white;
+        }
+        
         table {
             width: 100%;
+            min-width: 400px;
             border-collapse: collapse;
             background: white;
-            border-radius: 10px;
-            overflow: hidden;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
         }
         
         th, td {
@@ -204,6 +210,40 @@
             
             button {
                 width: 200px;
+            }
+            
+            .historico h2 {
+                font-size: 1.4em;
+            }
+            
+            .table-container {
+                margin: 0 -20px;
+                border-radius: 0;
+            }
+            
+            table {
+                min-width: 350px;
+            }
+            
+            th, td {
+                padding: 8px 5px;
+                font-size: 14px;
+            }
+            
+            th {
+                font-size: 12px;
+                padding: 10px 5px;
+            }
+        }
+        
+        @media (max-width: 400px) {
+            th, td {
+                padding: 6px 3px;
+                font-size: 12px;
+            }
+            
+            .historico h2 {
+                font-size: 1.2em;
             }
         }
     </style>
@@ -431,16 +471,17 @@
             }
             
             let html = `
-                <table>
-                    <thead>
-                        <tr>
-                            <th>#</th>
-                            <th>Data</th>
-                            <th>Hora</th>
-                            <th>Resultado</th>
-                        </tr>
-                    </thead>
-                    <tbody>
+                <div class="table-container">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>Data</th>
+                                <th>Hora</th>
+                                <th>Resultado</th>
+                            </tr>
+                        </thead>
+                        <tbody>
             `;
             
             historico.forEach(item => {
@@ -506,8 +547,9 @@
             });
             
             html += `
-                    </tbody>
-                </table>
+                        </tbody>
+                    </table>
+                </div>
             `;
             
             tabelaHistorico.innerHTML = html;
