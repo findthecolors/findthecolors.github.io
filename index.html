@@ -95,16 +95,7 @@
             box-shadow: 0 10px 25px rgba(76, 175, 80, 0.3);
         }
         
-        #restartBtn {
-            background: linear-gradient(135deg, #ff6b6b, #ff5252);
-            color: white;
-        }
-        
-        #restartBtn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 10px 25px rgba(255, 107, 107, 0.3);
-        }
-        
+         
         button:disabled {
             opacity: 0.6;
             cursor: not-allowed;
@@ -227,13 +218,12 @@
         
         <div class="buttons">
             <button id="conferirBtn">Conferir</button>
-            <button id="restartBtn">Restart</button>
         </div>
         
         <div id="resultado"></div>
         
         <div class="historico">
-            <h2>📊 Histórico (Últimas 30 tentativas)</h2>
+            <h2>📊 Histórico (Últimas 10 tentativas)</h2>
             <div id="tabelaHistorico">
                 <div class="empty-history">Carregando histórico...</div>
             </div>
@@ -242,11 +232,10 @@
 
     <script>
         // URL do seu Google Apps Script (você precisa substituir pela URL real)
-        const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbz4zHvReJhHW2rE_ZRandmONFdD3mbQU2pOZwZMt0qDoPGJccbfjfgwv1-1hqvoQtLfeA/exec';
+        const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbzx1fkd3odGP6iLZOslivjyS9l7-uGX0wzUGmZpdCu-6XL55FBG1pkmw42cofqiIo0zMw/exec';
         
         const numeroInput = document.getElementById('numeroInput');
         const conferirBtn = document.getElementById('conferirBtn');
-        const restartBtn = document.getElementById('restartBtn');
         const resultado = document.getElementById('resultado');
         const tabelaHistorico = document.getElementById('tabelaHistorico');
         
@@ -291,9 +280,6 @@
         // Botão conferir
         conferirBtn.addEventListener('click', conferir);
         
-        // Botão restart
-        restartBtn.addEventListener('click', restart);
-        
         // Função para conferir número
         async function conferir() {
             const numero = numeroReal.trim();
@@ -305,7 +291,6 @@
             
             // Desabilitar botões durante a requisição
             conferirBtn.disabled = true;
-            restartBtn.disabled = true;
             mostrarResultado('Verificando...', 'loading');
             
             try {
@@ -327,8 +312,12 @@
                     
                     // Atualizar histórico
                     await atualizarHistorico(acertou ? 'acerto' : 'erro');
+
+                    // Limpar input
+                    restart();
                 } else {
                     mostrarResultado(data.error || 'Erro ao verificar. Tente novamente.', 'erro');
+                    restart();
                 }
                 
             } catch (error) {
@@ -338,7 +327,6 @@
             
             // Reabilitar botões
             conferirBtn.disabled = false;
-            restartBtn.disabled = false;
         }
 
         async function atualizarHistorico(resultadoTipo){
