@@ -242,7 +242,7 @@
 
     <script>
         // URL do seu Google Apps Script (você precisa substituir pela URL real)
-        const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbzICcDpJSy_QdjKeJIh-NpkOyavFDCfPG19o-mMzeBOT168azy4-l8Xo3a50mU9yJWhJw/exec';
+        const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbz4zHvReJhHW2rE_ZRandmONFdD3mbQU2pOZwZMt0qDoPGJccbfjfgwv1-1hqvoQtLfeA/exec';
         
         const numeroInput = document.getElementById('numeroInput');
         const conferirBtn = document.getElementById('conferirBtn');
@@ -309,16 +309,14 @@
             mostrarResultado('Verificando...', 'loading');
             
             try {
-                const response = await fetch(SCRIPT_URL, {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                    },
-                    body: JSON.stringify({
-                        action: 'verificar',
-                        numero: numero
-                    })
+                const response = await fetch(`${SCRIPT_URL}?action=getValue&number=${numero}`, {
+                    method: 'GET',
+                    mode: 'cors',
                 });
+                
+                if (!response.ok) {
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                }
                 
                 const data = await response.json();
                 
@@ -328,9 +326,9 @@
                     mostrarResultado(mensagem, acertou ? 'acerto' : 'erro');
                     
                     // Atualizar histórico
-                    await carregarHistorico();
+                    await atualizarHistorico(acertou ? 'acerto' : 'erro');
                 } else {
-                    mostrarResultado('Erro ao verificar. Tente novamente.', 'erro');
+                    mostrarResultado(data.error || 'Erro ao verificar. Tente novamente.', 'erro');
                 }
                 
             } catch (error) {
@@ -341,6 +339,50 @@
             // Reabilitar botões
             conferirBtn.disabled = false;
             restartBtn.disabled = false;
+        }
+
+        async function atualizarHistorico(resultadoTipo){
+            try {
+                // Formata a data e hora atuais para enviar ao script
+                const now = new Date();
+                const data = now.toLocaleDateString('pt-BR');
+                const hora = now.toLocaleTimeString('pt-BR', { hour: '2-digit', minute: '2-digit' });
+
+                // Use GET instead of POST to avoid CORS issues
+                const params = new URLSearchParams({
+                    action: 'updateHistory',
+                    data: data,
+                    hora: hora,
+                    resultado: resultadoTipo
+                });
+
+                // Faz a requisição GET para a URL do Apps Script
+                const response = await fetch(`${SCRIPT_URL}?${params.toString()}`, {
+                    method: 'GET',
+                    mode: 'cors'
+                });
+
+                // Verifica se a resposta foi bem-sucedida
+                if (!response.ok) {
+                    throw new Error(`Erro na rede: ${response.status} ${response.statusText}`);
+                }
+
+                const responseData = await response.json();
+                console.log('Resposta do Apps Script:', responseData);
+                
+                if (responseData.success) {
+                    console.log('Histórico atualizado com sucesso!');
+                    // Recarregar histórico após atualização
+                    await carregarHistorico();
+                } else {
+                    console.error('Erro ao atualizar histórico:', responseData.error);
+                }
+                
+                return responseData;
+
+            } catch (error) {
+                console.error('Falha ao atualizar o histórico:', error);
+            }
         }
         
         // Função para mostrar resultado
@@ -369,15 +411,14 @@
         // Função para carregar histórico
         async function carregarHistorico() {
             try {
-                const response = await fetch(SCRIPT_URL, {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                    },
-                    body: JSON.stringify({
-                        action: 'historico'
-                    })
+                const response = await fetch(`${SCRIPT_URL}?action=getHistory`, {
+                    method: 'GET',
+                    mode: 'cors',
                 });
+                
+                if (!response.ok) {
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                }
                 
                 const data = await response.json();
                 
@@ -393,6 +434,7 @@
             }
         }
         
+        
         // Função para exibir histórico na tabela
         function exibirHistorico(historico) {
             if (!historico || historico.length === 0) {
@@ -404,8 +446,9 @@
                 <table>
                     <thead>
                         <tr>
-                            <th>Data/Hora</th>
-                            <th>Número Digitado</th>
+                            <th>#</th>
+                            <th>Data</th>
+                            <th>Hora</th>
                             <th>Resultado</th>
                         </tr>
                     </thead>
@@ -413,15 +456,63 @@
             `;
             
             historico.forEach(item => {
-                const dataFormatada = new Date(item.dataHora).toLocaleString('pt-BR');
-                const resultado = item.acertou ? '✅ Acerto' : '❌ Erro';
-                const classe = item.acertou ? 'acerto-row' : 'erro-row';
+                // Use the keys from your Apps Script response
+                const numero = item.historico || item['#'] || '-';
+                const rawData = item.data || '-';
+                const rawHora = item.hora || '-';
+                const resultadoTexto = item['acerto ou erro'] || item.resultado || '-';
+                
+                // Format date to show only DD/MM/YYYY
+                let dataFormatada = rawData;
+                if (rawData !== '-' && rawData) {
+                    try {
+                        const date = new Date(rawData);
+                        if (!isNaN(date.getTime())) {
+                            dataFormatada = date.toLocaleDateString('pt-BR');
+                        }
+                    } catch (e) {
+                        // If it's already in DD/MM/YYYY format or string, keep as is
+                        dataFormatada = rawData.toString().split(' ')[0]; // Take only the date part
+                    }
+                }
+                
+                // Format time to show only HH:MM
+                let horaFormatada = rawHora;
+                if (rawHora !== '-' && rawHora) {
+                    try {
+                        const time = new Date(rawHora);
+                        if (!isNaN(time.getTime())) {
+                            horaFormatada = time.toLocaleTimeString('pt-BR', { 
+                                hour: '2-digit', 
+                                minute: '2-digit' 
+                            });
+                        }
+                    } catch (e) {
+                        // If it's already in HH:MM format or string, extract time part
+                        const timeStr = rawHora.toString();
+                        const timeMatch = timeStr.match(/(\d{1,2}):(\d{2})/);
+                        if (timeMatch) {
+                            horaFormatada = `${timeMatch[1].padStart(2, '0')}:${timeMatch[2]}`;
+                        } else {
+                            // Try to extract time from datetime string
+                            const timePart = timeStr.split(' ')[1];
+                            if (timePart && timePart.includes(':')) {
+                                const parts = timePart.split(':');
+                                horaFormatada = `${parts[0]}:${parts[1]}`;
+                            }
+                        }
+                    }
+                }
+                
+                const classe = resultadoTexto.toLowerCase().includes('acerto') ? 'acerto-row' : 'erro-row';
+                const emoji = resultadoTexto.toLowerCase().includes('acerto') ? '✅' : '❌';
                 
                 html += `
                     <tr class="${classe}">
+                        <td>${numero}</td>
                         <td>${dataFormatada}</td>
-                        <td>${item.numero}</td>
-                        <td>${resultado}</td>
+                        <td>${horaFormatada}</td>
+                        <td>${emoji} ${resultadoTexto}</td>
                     </tr>
                 `;
             });
