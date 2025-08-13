@@ -1,1571 +1,455 @@
 <!DOCTYPE html>
-<html>
-
+<html lang="pt-BR">
 <head>
-  <meta charset="utf-8" name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Exercícios</title>
-  <style>
- 	 html {
-		 zoom:100%;
-    	}
-
-	body {
-   		margin: 0;
-    	padding: 0;
-    	height: 100%;
-    	background: lightgray;
-    	width: 100%;
-		float:center;
-	overflow:auto;
-	
-        }
-    
-	
-	
-    .button-roxo {
-        background-color: purple;
-        border: none;
-        color: white;
-        font-weight: bold;
-        padding: 15px 32px;
-        text-align: center;
-        text-decoration: none;
-        display: block;
-        font-size: 15px;
-        cursor: pointer;
-	    
-    }
-    .myTitulo {
-  		text-align: center;
-        	font-size: 20px;
-        	color: white;
-	        padding:20px;
-	}
-    
-	.myCorpo {
-		margin-top:50px;
-		text-align:center;
-        	font-size: 40px;
-		padding: 50px;
-	}
-	  .Abs {
-		  text-align:center;
-		  display:flex;
-		  flex-direction:column;
-         }  
-	  .AbsParent{
-		  padding:20px;
-	  }  
-	  .tt{
-		  margin-top:160px;
-	  }
-  </style>
-</head>
-
-<body>
-    <div class="row">
-        <h1 class="myTitulo" id="aqui2" ><strong></strong></h1>
-    </div>
-    <div class="row">
-      <div class= "myCorpo" id="aqui"><b></b>
-      </div>
-    </div>
-    <div class="tt">
-    <div class="AbsParent">
-    <div class="row">
-        <div class="Abs">
-          <button class="button-roxo" onclick="myTxt()" id="botaotxt">
-            <strong>>></strong>
-          </button>
-          <button class="button-roxo" onclick="myTxtProx()" id="botaotxtprox">
-            <strong>></strong>
-          </button>
-          <button class="button-roxo" onclick="myTxtResul()" id="botaotxtresul" >
-            <strong>=</strong> 
-          </button>
-            <button class="button-roxo" onclick="restartFunction()" id="botaorestart3" >    <strong>«</strong>            
-            </button>
-        </div>
-      </div>
-      </div>
-       <div class="none">
-       <form>
-      	<label for="username" id="labelVelocidade">Velocidade em ms:</label>
-  		<input type="number" id="inputVelocidade" value=600>
-        </form>
-      </div>
-    
-</div>
-  
-  <script>
-  
-	let proverbs;
-	let frase = "";
-	let ponto1 = -1;
-	let ponto2;
-	let pontointermediario;
-	let letraaleatoria;
-    let vetorpalavras = "";
-	var pontointermediario2 = 1;
-    let contador = 0;
-    let velocidade = 0;
-		
-	window.onload = startFunction();
-    //gerando número aletório entre min e max
-    
-	function getRandomInt(min, max) {
-      min = Math.ceil(min);
-      max = Math.floor(max);
-      return Math.floor(Math.random() * (max - min) + min);
-    }
-    	
-    function startFunction() {
-      document.getElementById("aqui").innerHTML = "começar";
-      botaotxt.style.display = 'block';
-	  botaotxtprox.style.display = 'none';
-      botaotxtresul.style.display = 'none';
-	  botaorestart3.style.display = 'none';
-      labelVelocidade.style.display = 'block';
-      inputVelocidade.style.display = 'block';
-      frase = "";
-	  ponto1 = -1;
-	  ponto2 = -1;
-	  pontointermediario=-1;
-	  letraaleatoria=0;
-	  vetorpalavras = "";
-	  pontointermediario2 = 1;
-      contador = 0;
-      
-	}
-		
-	function restartFunction(){
-      startFunction();
-    }
-    
-	
-    function myTxt(){
-		botaotxt.style.display = 'none';
-		botaotxtprox.style.display = 'none';
-		botaotxtresul.style.display = 'none';
-		botaorestart3.style.display = 'none';
-        labelVelocidade.style.display = 'none';
-        inputVelocidade.style.display = 'none';
-        velocidade = parseInt(document.getElementById("inputVelocidade").value, 10);
-        document.getElementById("aqui2").innerHTML = `Velocidade: ${velocidade }`;
-		
-        proverbs = `.Provérbios de Salomão, filho de David, rei de Israel.
- para conhecer sabedoria e educação,
-para compreender as sentenças de inteligência, para adquirir uma educação de entendimento, justiça, retidão e integridade,
- para dar aos inexperientes a prudência,
-e ao jovem, o conhecimento e a ponderação.  O sábio escutará e aumentará a experiência e o inteligente alcançará competência
- para compreender o provérbio e a alegoria, as palavras dos sábios e os seus enigmas.
- O temor do Senhor é o princípio do conhecimento;
-os estúpidos desprezam sabedoria e a educação.
-Convite dos malfeitores
- Escuta, meu filho, a educação do teu pai
-e não repudies a instrução da tua mãe,
- porque eles serão um adorno de encanto para a tua cabeça
-e colares para o teu pescoço.
-Meu filho, se os pecadores te quiserem seduzir,
-não consintas nisso!
-Se te disserem: «Anda conosco!
-Se te disserem: Anda conosco!
-Façamos uma emboscada para derramar sangue, armemos ciladas ao inocente, sem motivo;
-como faz o mundo dos mortos, devoremo-los vivos, inteiros, como os que descem à cova.
-Encontraremos toda a espécie de bens preciosos
-e encheremos as nossas casas de despojos;
-tu tirarás a tua parte como um de nós
-e teremos todos uma única bolsa!» Meu filho, não faças caminho com eles, evita que o teu pé siga as suas sendas, porque os seus pés correm para o mal
-e teremos todos uma única bolsa! Meu filho, não faças caminho com eles, evita que o teu pé siga as suas sendas, porque os seus pés correm para o mal
-e eles apressam-se a derramar sangue.
-Porque em vão se lança a rede
-à vista de qualquer espécie de aves.
-Eles fazem emboscadas pondo em risco o seu próprio sangue e armam ciladas contra as suas vidas.
-Assim são os atalhos de todo o que tem ganância desmedida,
-pois ela tira a vida aos ambiciosos.
-Convite da sabedoria
-A sabedoria clama nas ruas, nas praças ergue a sua voz;
-por cima dos grandes tumultos ela clama, às portas da cidade profere o seu discurso:
-«Até quando, ó ingénuos, amareis a ingenuidade?
-Até quando, ó ingénuos, amareis a ingenuidade?
-Até quando os zombadores apreciarão a zombaria e os insensatos odiarão o conhecimento?
-Voltai às minhas admoestações,
-eis que vou derramar sobre vós o meu espírito, dar-vos a conhecer as minhas palavras.
-Uma vez que chamei e recusastes,
-estendi a minha mão e ninguém prestou atenção,
- rejeitastes cada um dos meus conselhos e não aceitastes a minha admoestação,
-também eu me hei de rir na vossa adversidade, zombarei quando o terror vier sobre vós,
-quando o terror vier sobre vós como uma catástrofe, quando a desgraça chegar como uma tempestade, quando vos atingirem a angústia e a tribulação.
-Então chamarão por mim, mas eu não responderei; madrugarão à minha procura e não me encontrarão. Porque odiaram o conhecimento
-e não escolheram o temor do Senhor,
-não quiseram saber do meu conselho
-e rejeitaram todas as minhas admoestações. Por isso de comer do fruto da sua conduta e saciar-se com as suas maquinações.
-Pois a recusa mata os ingénuos
-e a despreocupação dos insensatos os destruirá.
-Mas aquele que me escuta viverá seguro e tranquilo, sem temer nenhum mal».
-Mas aquele que me escuta viverá seguro e tranquilo, sem temer nenhum mal.
-A sabedoria é dom de Deus
-Meu filho, se acolheres as minhas palavras e guardares contigo os meus preceitos,
- dando ouvidos à sabedoria
-e inclinando o teu coração à inteligência;
- sim, se invocares o entendimento
-e emprestares a tua voz à inteligência,
- se a procurares como a prata
-e a buscares como tesouros escondidos,
- então compreenderás o temor do Senhor
-e encontrarás o conhecimento de Deus.
- Pois é o Senhor que dá a sabedoria,
-da sua boca procedem o saber e o entendimento,
- garante o sucesso aos homens íntegros;
-como escudo para os que se comportam com inteireza,
-protege as sendas da justiça
-e guarda os caminhos dos seus fiéis.
- Então compreenderás a justiça e o direito, a retidão e todos os roteiros do bem,
-pois a sabedoria entrará no teu coração
-e o conhecimento será delícia para a tua alma.
-A reflexão guardar-te-á
-e o entendimento proteger-te-á,
-para te livrar do caminho do mal,
-do homem que propõe coisas perversas,
-dos que abandonam as sendas do que é correto, andando por caminhos tenebrosos,
-dos que se alegram em fazer o mal
-e se regozijam com as perversidades do mal,
-daqueles cujos percursos são tortuosos e se transviam nas suas veredas;
-para te livrar da mulher estranha, da estrangeira de palavras sedutoras,
-que abandona o companheiro da sua juventude
-e esqueceu a aliança do seu Deus.
-Pois a sua casa resvala para a morte,
-e os seus percursos, para o mundo das Sombras;
-todos os que vão até ela não voltarão nem recuperarão os sendeiros da vida. Assim andarás pelo caminho dos bons e seguirás as sendas dos justos.
-Pois os homens retos habitarão a terra
-e os homens íntegros permanecerão nela, mas os malfeitores serão exterminados da terra e os traidores serão varridos dela.
-Benefícios da sabedoria
-Meu filho, não esqueças a minha instrução
-e que o teu coração guarde os meus preceitos,  porque eles te darão longos dias e anos de vida e te acrescentarão a paz.
- Não te abandonem a misericórdia e a fidelidade:
-prende-as como um colar ao teu pescoço, grava-as na tábua do teu coração
- e encontrarás favor e bom êxito aos olhos de Deus e dos homens.
- Confia no Senhor de todo o teu coração e não te apoies na tua inteligência;
- procura conhecê-lo em todos os teus caminhos e Ele aplanará as tuas sendas.
- Não te tomes por sábio a teus próprios olhos, teme antes o Senhor e afasta-te do mal.
- Isto será remédio para o teu corpo e alívio para os teus ossos.
- Honra o Senhor com os teus haveres
-e com as primícias de todas as tuas colheitas; e os teus celeiros ficarão completamente cheios e os teus lagares transbordarão de vinho novo. Meu filho, não rejeites a educação do Senhor, nem te irrites com as suas correções,
-porque o Senhor corrige aquele que ama,
-tal como faz um pai ao filho preferido.
-A sabedoria é árvore de vida
-Feliz daquele que encontrou a sabedoria, daquele que adquiriu a inteligência, porque vale mais este lucro que o da prata
-e o seu rendimento é melhor que o ouro fino.
-Ela é mais preciosa que as pérolas;
-e nada do que possas desejar se lhe compara.
-Na sua mão direita está o prolongamento dos dias, na sua esquerda, riqueza e glória.
-Os seus caminhos são caminhos que agradam e todas as suas sendas são de paz.
-Ela é uma árvore de vida para quem a alcançar:
-aqueles que se agarram a ela são felizes. Pela sabedoria o Senhor fundou a terra, pela inteligência estabeleceu os céus.
-Pelo seu conhecimento se abriram os abismos e as nuvens destilam o orvalho.
-O Senhor protege o justo
-Meu filho, não percas de vista estas coisas:
-guarda a ponderação e a prudência.
-Elas serão vida para a tua alma
-e encanto para o teu pescoço.
-Então, percorrerás com segurança o teu caminho
-e o teu pé não tropeçará.
-Quando te deitares não te atemorizarás; uma vez deitado, o teu sono será suave. Não temas qualquer terror imprevisto,
-nem a catástrofe dos malfeitores, quando chegar.
-Pois o Senhor estará ao teu lado
-e defenderá o teu pé da armadilha.
-Deveres para com o próximo
-Não recuses o bem a quem ele é devido, quando estiver na tua mão fazê-lo.
-Se tens algo que dar, não digas ao teu próximo:
-«Vai-te embora e volta depois. Amanhã te darei».
-Vai-te embora e volta depois. Amanhã te darei.
-Não planeies o mal contra o teu próximo,
-ele que mora confiante ao teu lado. Não discutas sem motivo com ninguém, se ele não te tiver feito qualquer mal.
-Não tenhas inveja do homem violento, nem escolhas nenhum dos seus caminhos;
-pois os perversos são uma abominação para o Senhor, mas com os íntegros Ele tem intimidade.
-A maldição do Senhor pesa sobre a casa do malfeitor, mas Ele abençoa a morada dos justos.
- Ele zomba dos zombadores,
-mas aos humildes concede favor.
-Os sábios herdarão a glória,
-mas os insensatos amontoam desonra.
-A sabedoria passa de pai para filho
-Escutai, filhos, a educação de um pai;
-prestai atenção, para conhecerdes a inteligência.
- Pois é uma boa lição a que vos deixei; não abandoneis a minha instrução.
- Também eu fui filho do meu pai, querido e único aos olhos da minha mãe.
- Ele instruiu-me, dizendo:
-«Que o teu coração acolha as minhas palavras; observa os meus preceitos e viverás.
-Que o teu coração acolha as minhas palavras; observa os meus preceitos e viverás.
- Adquire a sabedoria, adquire a inteligência; não te esqueças nem te desvies
-das palavras da minha boca.
- Não a abandones e ela te protegerá, ama-a e ela te guardará.
- O princípio da sabedoria é: adquire sabedoria;
-e com tudo o que possuíres adquire inteligência.
- Aprecia-a e ela te exaltará; abraça-a e ela te honrará.
- Ela colocará na tua cabeça um adorno de encanto e proteger-te-á com uma coroa de esplendor.
-O caminho dos justos e o dos malfeitores Escuta, meu filho, e acolhe as minhas palavras e multiplicar-se-ão para ti anos de vida.
-Eu orientei-te pelo caminho da sabedoria, encaminhei-te por trilhos de retidão.
-Quando caminhares, não ficarão apertados os teus passos
-e, se correres, não tropeçarás.
-Mantém-te firme na educação que tiveste, não falhes;
-conserva-a, porque é a tua vida.
-Não entres pelas veredas dos malfeitores
-nem andes pelo caminho dos maus.
-Evita-o, não passes por ele,
-desvia-te dele e passa ao largo.
-Pois eles não dormem, senão praticarem o mal; ficam sem sono, se não fizerem tropeçar alguém. Comem o pão da maldade
-e bebem o vinho da violência.
-Mas a vereda dos justos é como luz que desponta e essa luz vai crescendo até estar firme o dia.
-O caminho dos malfeitores é como a escuridão; eles não sabem onde vão tropeçar.
-Cuidar da própria existência
-Meu filho, presta atenção às minhas palavras,
-inclina o teu ouvido ao que te digo. Que elas não se desviem dos teus olhos; guarda-as dentro do teu coração,
-porque são vida para aqueles que as encontram
-e remédio para todo o seu corpo.
-Mais que tudo guarda diligentemente o teu coração, pois dele fluem as nascentes da vida.
-Desvia de ti a linguagem enganosa, afasta de ti a maledicência.
-Que os teus olhos olhem em frente
-e que o teu olhar veja direito diante de ti.
-Mantém direita a rota dos teus pés
-e todos os teus caminhos serão firmes!
-Não te desvies para a direita nem para a esquerda
-e afasta os teus pés do mal.
-Advertências contra o adultério
-Meu filho, presta atenção à minha sabedoria,
-inclina o teu ouvido à minha experiência,
- a fim de guardares a ponderação;
-e os teus lábios guardarão o conhecimento.
- Porque os lábios da mulher estranha destilam mel e o seu falar é mais suave que o azeite.
-Mas no fim ela é amarga como o absinto,
-cortante como a espada de dois gumes.
- Os seus pés escorregam para a morte
-e os seus passos levam ao mundo dos mortos.
- Ela não pondera sobre o caminho da vida,
-as suas rotas extraviam-se e ela não sabe.
-  E agora, filhos, escutai-me
-e não vos afasteis das palavras da minha boca.
- Afasta de junto dela o teu caminho
-e não te aproximes da porta da sua casa, para não entregares a outros a tua honra e os teus anos a uma gente cruel;
-para que os estranhos não se saciem com o teu esforço e o fruto dos teus trabalhos não fique em casa alheia. Pois no fim tu terias de gemer,
-quando a tua carne e o teu corpo se consumissem,
-e terias de dizer: «Como fui eu odiar a educação
-e terias de dizer: Como fui eu odiar a educação
-e o meu coração desprezou a repreensão? Porque não escutei a voz dos que me instruíam nem dei ouvidos aos que me ensinavam?
-Cheguei quase ao cúmulo da desgraça
-no meio da assembleia e da comunidade».
-no meio da assembleia e da comunidade.
-Encontrar a alegria
-Bebe da água da tua cisterna,
-da água que nasce dentro do teu poço. Deveriam transbordar para fora as tuas fontes e as torrentes de água perder-se pelas praças? Que elas sejam somente para ti
-e não para os estranhos que estão contigo.
-Que a tua fonte seja abençoada
-e tu alegra-te com a mulher da tua juventude,
-corça amorosa, gazela encantadora.
-Que os seus seios te inebriem em todo o tempo
-e sejas continuamente atraído pelo seu amor.
-Por que te deixas atrair por outra mulher, meu filho,
-e abraças o peito de uma estrangeira?
-Pois os caminhos do homem estão sob o olhar do Senhor e Ele pondera todas as suas rotas.
-O malfeitor fica prisioneiro das suas iniquidades
-e é amarrado com as cadeias do seu pecado.
-Morrerá por falta de disciplina
-e será arrastado pelo excesso da sua insensatez.
-Instruções sobre o dinheiro
-Meu filho, se ficaste fiador do teu próximo,
-se deste um aperto de mão a um estranho,
- se te comprometeste pelas palavras dos teus lábios,
-se ficaste preso pelas palavras dos teus lábios,
- procede assim, meu filho, e liberta-te; já que ficaste nas mãos do teu próximo:
-vai, humilha-te e insiste junto do teu próximo.
- Não concedas sono aos teus olhos nem repouso às tuas pálpebras.
- Liberta-te do laço como a gazela,
-e do laço estendido, como o pássaro.
-O preguiçoso
- Vai ver a formiga, ó preguiçoso a,
-observa os seus caminhos e sê sábio.
- Ela não tem comandante, intendente ou supervisor;
- no verão, prepara o seu alimento,
-no tempo da ceifa, junta a sua comida.  Até quando dormirás tu, ó preguiçoso? Quando te levantarás do teu sono?
-É um pouco a dormir, um pouco a dormitar e um pouco a cruzar os braços para descansar.
-E assim a pobreza cai sobre ti como um assaltante, e a indigência, como um homem armado.
-O perverso
-O homem perverso, o iníquo anda com a falsidade na boca:
-pisca os olhos, bate com os pés, faz sinais com os dedos;
-no seu coração há insídias, está sempre a maquinar o mal
-e a todo o momento lança discórdias.
-Por isso, a desgraça virá sobre ele de improviso
-e, num momento, ficará arruinado e não terá remédio.
-Coisas que Deus abomina
-Seis são as coisas que o Senhor detesta e sete, aquelas que Ele abomina:
-olhos altivos, língua mentirosa,
-mãos que derramam sangue inocente, coração que maquina planos iníquos, pés apressados em correr para o mal, testemunha falsa que profere mentiras e o que lança discórdias entre irmãos.
-Não ceder à sedução
-Meu filho, guarda os preceitos do teu pai
-e não desprezes a instrução da tua mãe. Ata-os constantemente sobre o teu coração, põe-nos em volta do teu pescoço.
-Servir-te-ão de guia no teu caminho, velarão por ti quando te deitares
-e falarão contigo quando despertares.
-Pois o preceito é uma lâmpada e a instrução, uma luz;
-e as correções da educação são caminho de vida.
-Eles guardar-te-ão da mulher do próximo e da língua sedutora da mulher estranha.
-Não cobices em teu coração a sua formosura nem te deixes prender dos seus olhares.
-Pois à prostituta basta um pedaço de pão,
-a mulher casada vai à caça de uma vida preciosa. Será que um homem pode levar fogo no seu seio, sem que as suas vestes se incendeiem?
-Ou pode alguém caminhar sobre brasas, sem que os seus pés se queimem?
-Assim é quem se aproxima da mulher do seu próximo;
-quem lhe tocar não ficará impune.
-Não se incrimina o ladrão
-que rouba para saciar o apetite, porque tem fome;
-mas, se for apanhado, restituirá sete vezes mais e entregará todos os bens da sua casa.
-Quem comete adultério com uma mulher tem falta de sensatez, quem assim faz arruína-se a si mesmo.
-Esse encontrará infâmia e ignomínia e o seu opróbrio jamais se apagará. Pois o marido fica furioso e ultrajado
-e não terá piedade no dia da vingança.
-Ele não te perdoará por qualquer compensação,
-nem aceitará que multipliques presentes de suborno.
-Convite para a sabedoria
-Meu filho, guarda as minhas palavras,
-conserva os meus preceitos junto de ti como um tesouro;
- guarda os meus preceitos e viverás
-e a minha instrução, como a menina dos teus olhos.
- Prende-os aos teus dedos,
-escreve-os na tábua do teu coração.
- Diz à sabedoria: «Tu és minha irmã», e chama «amiga» à inteligência,
- Diz à sabedoria: Tu és minha irmã, e chama amiga à inteligência,
- para que te guarde da mulher estranha,
-da estrangeira que seduz com as suas palavras.
-Atração enganadora
-Um dia, à janela da minha casa, olhava eu por entre as frestas
-a observar um grupo de ingénuos
-e vi, no meio deles, um jovem insensato. Passando pela rua, junto à esquina, dirigiu os passos para a casa dela.
-Era ao crepúsculo, ao entardecer do dia,
-no meio da noite e da escuridão.
-E eis que uma mulher lhe sai ao encontro,
-com modos de prostituta e coração dissimulado,
-provocadora e insolente;
-os seus pés não param dentro da sua casa.
-Umas vezes na rua outras nas praças, a cada esquina ela está à espreita.
-Agarra o jovem, dá-lhe um beijo e diz-lhe com ar atrevido:
-«Tinha prometido sacrifícios de comunhão e hoje cumpri o meu voto.
-Tinha prometido sacrifícios de comunhão e hoje cumpri o meu voto.
-Por isso saí ao teu encontro,
-procurando ver o teu rosto e eis que te achei.
-Adornei a minha cama de colchas, tecidos coloridos de linho do Egito. Perfumei o meu leito com mirra, aloés e cinamomo.
-Vem! Embriaguemo-nos de carícias até amanhecer, deleitemo-nos de amores,
-porque o meu marido não está em sua casa; foi fazer uma longa viagem,
-levou consigo a bolsa com o dinheiro
-e só voltará a sua casa no dia da lua-cheia.» Foi-o desviando com a sua grande experiência e arrastou-o com a sedução dos seus lábios.
-e só voltará a sua casa no dia da lua-cheia. Foi-o desviando com a sua grande experiência e arrastou-o com a sedução dos seus lábios.
-Ele foi imediatamente atrás dela,
-como um boi que vai para o matadouro
-e como um veado que é apanhado no laço até que uma flecha lhe trespassa o fígado; é como a ave que se precipita na rede,
-sem saber que está em risco a sua vida.
-E agora, escutai-me, filhos,
-prestai atenção às palavras da minha boca.
-Que o teu coração não se desvie para os caminhos dela; não te extravies nas suas veredas,
-porque ela fez cair muitas vítimas
-e eram fortes todos os que ela matou.
-A sua casa é caminho para o mundo dos mortos; e este desce para as moradas da morte.
-A sabedoria exorta à escuta
-Eis que a sabedoria chama
-e a inteligência levanta a sua voz!
- No alto das colinas, ao longo do caminho, nas encruzilhadas das veredas ela se coloca.
- Junto aos portões de entrada para a cidade, à entrada das portas ela brada:
- «É por vós, homens, que eu clamo,
- É por vós, homens, que eu clamo,
-a minha voz dirige-se aos filhos dos homens.
- Vós, ingénuos, aprendei a prudência,
-e vós, insensatos, tende a inteligência de coração.
- Escutai! Vou anunciar-vos coisas retas;
-e os meus lábios abrem-se para proclamar o direito.
- Sim, a minha boca profere a verdade
-e os meus lábios abominam a maldade.
- Todas as palavras da minha boca são de justiça, nelas não há nada tortuoso ou rebuscado.
- Todas são corretas para quem tem inteligência
-e direitas para os que encontram o conhecimento.
-Aceitai a minha educação e não a prata:
-o conhecimento vale mais que o ouro fino.
-Pois a sabedoria é melhor do que as pérolas
-e nenhuma das mais desejáveis se lhe compara.
-Eu, a sabedoria, moro com a prudência e alcanço conhecimento e ponderação.
- O temor do Senhor consiste em odiar o mal. Também eu odeio a soberba e a arrogância,
-o caminho do mal e a boca cheia de insídias.  A mim pertencem o conselho e o sucesso, eu sou a inteligência, é minha a fortaleza. Por mim reinam os reis
-e os magistrados decretam a justiça;
- por mim governam os governantes e os notáveis, todos os que exercem a justiça.
-Eu amo aqueles que me amam,
-e aqueles que me procuram encontram-me.
-Comigo há riqueza e glória, fortuna consolidada e justiça.
- O meu fruto é melhor que ouro, que ouro puro, e o meu produto vale mais que prata escolhida. Eu ando pelo caminho da justiça,
-pelas sendas do direito,
-para deixar uma herança aos que me amam, pois vou encher os seus tesouros.
-Origem da sabedoria
- O Senhor criou-me como princípio do seu caminho, antes das suas criações mais antigas.
-Desde a eternidade fui formada,
-desde o princípio, antes dos primórdios da terra.
-Fui concebida quando não existiam os abismos nem existiam as fontes profundas das águas.
-Antes de serem implantadas as montanhas, antes das colinas eu fui concebida;
-ainda Ele não tinha feito a terra nem e os espaços de fora, nem as primeiras poeiras do universo.
-Quando Ele firmava os céus, eu estava lá;
-quando estabelecia um círculo à superfície do abismo,
-quando adensava as nuvens nas alturas, quando dava força às fontes dos abismos, quando impunha ao mar o seu limite
-para que as águas não ultrapassassem a sua margem, quando estabelecia os fundamentos da terra,
-então eu estava a seu lado como arquiteto. Eu estava em delícias, dia após dia,
-alegrando-me a todo o momento na sua presença,
-alegrando-me no universo da sua terra,
-e as minhas delícias eram estar com os filhos dos homens.
-Feliz o que escuta a sabedoria
-E agora, filhos, escutai-me.
-Felizes aqueles que seguem os meus caminhos! Escutai a exortação e sede sábios; não a rejeiteis. Feliz o homem que me escuta,
-vigiando às minhas portas dia após dia, guardando os umbrais da minha entrada. Pois quem me encontra encontra a vida
-e alcança benevolência da parte do Senhor.
-Mas aquele que se desvia de mim prejudica-se a si mesmo;
-todos os que me odeiam amam a morte.
-Contraposição entre sabedoria e insensatez
- A Sabedoria edificou a sua casa
-e talhou as suas sete colunas.
- Abateu os seus animais, fez a sua mistura de vinho e preparou a sua mesa.
- Enviou as suas servas e proclamou pelos pontos mais altos da cidade:
- «Quem é inexperiente venha por aqui».
- Quem é inexperiente venha por aqui.
-E ao insensato, ela diz-lhe:
- «Vinde! Comei do meu pão
- Vinde! Comei do meu pão
-e bebei do vinho que eu misturei.
-Deixai a ingenuidade e vivei
-e segui pelo caminho da inteligência.
-Quem corrige o trocista atrai sobre si o escárnio, e quem censura o malfeitor atrai o seu insulto.
- Não corrijas o trocista, não aconteça que fique a odiar-te;
-repreende o sábio e ele te amará.
-Dá ao sábio e ele ficará ainda mais sábio;
-ensina o justo e ele aumentará o saber.
- O princípio da sabedoria é o temor do Senhor e o conhecimento do Santo é inteligência.
-Pois comigo multiplicar-se-ão os teus dias e anos de vida te serão acrescentados.
-Se fores sábio, serás sábio para teu bem;
-se fores trocista, só tu terás de o suportar».
-se fores trocista, só tu terás de o suportar.
-Dona Insensatez é irrequieta;
-é sedução e não sabe de mais nada.
-Senta-se à porta da sua casa,
-sobre um trono, no mais alto da cidade,
- para chamar os que passam pelo caminho e seguem direitos o seu percurso:
- «Quem é inexperiente desvie-se para aqui».
- Quem é inexperiente desvie-se para aqui.
-E ao insensato ela diz:
- «Águas roubadas sabem a doce
-e o pão às escondidas é mais saboroso».
- Águas roubadas sabem a doce
-e o pão às escondidas é mais saboroso.
- Ele não sabe que ali há apenas Sombras
-e os seus convidados estão no fundo do reino dos mortos.
-O sábio e o insensato
-Provérbios de Salomão:
-Um filho sábio dá alegria ao pai,
-e um filho insensato é a aflição da sua mãe.
-Os tesouros do crime de nada servem, mas a justiça livra da morte.
- O Senhor não deixa o justo passar fome, mas rejeita a ambição dos malfeitores.
- A mão preguiçosa traz pobreza, mas a mão dos diligentes enriquece.
- Aquele que recolhe no verão é previdente;
-aquele que dormita durante a ceifa é uma vergonha.
- As bênçãos descem sobre a cabeça do justo e a boca dos malfeitores encobre a violência.
- A memória do justo é de bênção,
-mas o nome do malfeitor apodrecerá.
- O sábio de coração acolhe os mandamentos, mas o que profere idiotices cairá em ruína.
- Quem caminha na integridade caminha seguro,
-mas o que perverte os seus caminhos será descoberto.
-Quem pisca um olho causa problemas e quem profere idiotices cairá em ruína. A boca do justo é fonte de vida,
-mas a boca dos malfeitores encobre a violência.
-O ódio suscita conflitos,
-mas o amor cobre todas as faltas.
-Nos lábios do inteligente encontra-se a sabedoria,
-a vara é para as costas do que tem falta de entendimento.
-Os sábios entesouram conhecimento,
-mas a boca do estúpido é uma ruína iminente.
-A fortuna do rico é o baluarte da sua força; a ruína dos pobres é a sua pobreza.
-O justo e o malfeitor
-O salário do justo é para a vida; o ganho do malfeitor, para o fracasso.
-Quem guarda a disciplina caminha para a vida, mas quem abandona a advertência extravia-se. Os lábios mentirosos escondem o ódio;
-quem espalha a calúnia é louco.
-Onde abundam as palavras não falta a ofensa, mas quem refreia os seus lábios é inteligente. A língua do justo é prata escolhida,
-mas o coração dos malfeitores pouco vale.
-Os lábios do justo apascentam muitos,
-mas os estúpidos morrem por falta de entendimento.
-A bênção do Senhor produz riqueza,
-e o esforço que a acompanha não acrescenta nada. Planear maldades é um divertimento para o insensato, a sabedoria é o do homem inteligente.
-O que o malfeitor teme é o que lhe vai acontecer; mas o desejo dos justos será concedido.
-Quando passa a tempestade, o malvado deixa de existir,
-mas o justo está firme para sempre.
-Como o vinagre nos dentes e o fumo nos olhos, assim é o preguiçoso para os que o enviam.
-O temor do Senhor prolonga os dias,
-mas os anos dos malfeitores serão abreviados.
-A expectativa dos justos é de alegria,
-mas a esperança dos malfeitores desvanecer-se-á. O caminho do Senhor é fortaleza para o integro, mas é ruína para os que praticam o mal.
-O justo jamais será abalado, mas os malfeitores não habitarão a terra.
-A boca do justo produz sabedoria,
-mas a língua que diz falsidades será cortada. Os lábios do justo conhecem a benevolência e a boca dos malfeitores, as falsidades.
-Justiça e maldade
-Balanças falsas são coisa abominável aos olhos do Senhor; mas o peso correto é do seu agrado.
- Quando vem o orgulho vem também a desonra; mas a sabedoria está com os modestos.
- A integridade dos que são retos há de guiá-los; mas a falsidade dos traidores devastá-los-á.
- No dia da ira, a fortuna de nada serve, mas a justiça livra da morte.
- A justiça dos íntegros endireita-lhes o caminho, mas o malfeitor cairá pela sua maldade.
- A justiça dos retos livrá-los-á,
-mas os traidores serão dominados pela sua ambição.  Quando morre um malfeitor acaba-se a esperança; de igual modo acabará a sua expectativa nas riquezas.
- O justo liberta-se da angústia,
-mas o malfeitor vai cair nela.
- Com a boca o hipócrita arruína o seu próximo, mas pelo conhecimento os justos serão libertados. A cidade exulta com o bem dos justos
-e rejubila com a perdição dos malvados.
-A cidade é engrandecida com a bênção dos retos e arruinada pela boca dos malfeitores.
-Aquele que não tem senso despreza o seu próximo, mas o homem com entendimento sabe calar.
-O que anda a murmurar revela os segredos,
-mas o homem de confiança resguarda as palavras.
-Por falta de estratégias arruína-se um povo, mas há salvação na abundância de conselho.
-Quem é fiador de um estranho ficará prejudicado,
-mas quem recusa tais compromissos estará seguro.
-A mulher que tem encanto alcançará glória e os homens diligentes alcançarão fortuna.
-O homem misericordioso faz bem a si mesmo, mas o cruel magoa-se a si próprio.
-O malfeitor tem um ganho falso,
-mas o que semeia justiça tem um salário verdadeiro.
-Quem está firme na justiça caminha para a vida
-e o que persegue o mal, para a sua morte.
-O Senhor abomina os de coração distorcido, mas são do seu agrado os de caminho íntegro. Cedo ou tarde, o iníquo não ficará sem castigo, mas a descendência dos justos escapará.
-Anel de ouro em focinho de porco,
-tal é a mulher formosa desprovida de senso.
-O desejo dos justos é apenas o bem, o que espera os malfeitores é a ira. Quem reparte recolhe ainda mais,
-mas quem retém aquilo que deve terá apenas pobreza.
-Quem tem alma generosa prosperará
-e quem dá de beber receberá de beber também.
-Aquele que recusa dar o trigo será amaldiçoado pelo povo, mas a bênção descerá sobre a cabeça dos que o distribuem. Aquele que busca o bem procura agrado
-e quem corre atrás do mal, este cairá sobre ele.
-O que confia na sua riqueza murcha,
-mas os justos crescerão como folhas novas. Quem lança desordem na sua casa herdará o vento; o estulto será servo do que é sábio de coração.
-O fruto do justo é uma árvore de vida e o sábio conquista as pessoas.
-Se o justo recebe a paga aqui na terra, quanto mais o malfeitor e pecador!
-Prudência e trabalho
-Aquele que ama a disciplina ama o conhecimento, mas o que odeia a repreensão embrutece.
- O homem bom obtém agrado da parte do Senhor, mas Deus condena aquele que planeia maldades.
- Com o crime o homem não alcança solidez,
-mas a raiz dos justos não será abalada.
- A mulher de valor é a coroa do seu marido,
-mas a que o envergonha é como cárie a corroer os seus ossos.
- Os pensamentos dos justos vão pelo direito,
-mas os planos dos malfeitores são uma fraude.
- As palavras dos malfeitores são armadilha mortal,
-mas a boca dos homens retos liberta-os.
- Os malfeitores são derrubados e não subsistem,
-mas a casa dos justos permanecerá de pé.
- O homem é elogiado pelo seu bom senso, mas o de coração perverso será desprezado.
- Mais vale um homem desconsiderado que trabalha para si
-que um pretensioso que não tem que comer.
-O justo conhece o desejo do seu gado,
-mas as entranhas dos malfeitores são cruéis. Aquele que cultiva a sua terra será saciado de pão, mas o que persegue futilidades tem falta de senso.
- A ânsia do crime é a armadilha dos maus, mas a raiz do justo dará fruto.
-Verdade e engano
- O mau enreda-se em palavras criminosas,
-mas o justo escapa da angústia.
-Com o fruto da sua boca o homem sacia-se de bens
-e segundo as obras das suas mãos ser-lhe-á retribuído.  O caminho do estúpido é o correto a seus olhos, porém o sábio escuta os conselhos.
-No próprio dia se conhece a irritação do estúpido,
-mas o homem astuto encobre a afronta.
-O que fala verdade proclama a justiça,
-mas a falsa testemunha proclama a mentira. Há quem se exprima como a golpes de espada; porém, a língua dos sábios traz a cura.
-A boca verdadeira está firme para sempre;
-a língua mentirosa dura apenas um instante.
-Há falsidade no coração dos que congeminam o mal, mas para os que dão conselhos de paz há alegria.
-Nenhuma maldade atingirá o justo,
-mas os malfeitores ficam cheios de desgraças.
-O Senhor abomina os lábios mentirosos,
-mas os que praticam a verdade são do seu agrado.
-O homem astuto encobre o seu saber,
-mas o coração dos insensatos proclama a sua estupidez.
-A mão dos diligentes governará,
-mas a mão preguiçosa é obrigada à servidão.
-A preocupação no coração do homem deprime-o,
-mas uma boa palavra dá-lhe alegria.
-O justo evita o que é mau para si,
-mas o caminho dos malvados extravia-os.
- O preguiçoso não chega a assar a sua caça,
-mas a diligência é um bem precioso para o homem.
- Na senda da justiça está a vida,
-mas há caminhos abertos para a morte.
-Riqueza e Pobreza
-O filho sábio é fruto da educação paterna,
-mas o insolente não escuta a repreensão.
-O homem de bem come do fruto da sua boca, mas o apetite dos traidores é a violência.
-O que controla a sua boca guarda a sua vida; o que se descontrola no falar tem a ruína.
-O preguiçoso bem deseja, mas nada obtém para o seu apetite,
-mas o apetite do diligente fica satisfeito.
-O justo detesta palavras de mentira, o malfeitor envergonha e ofende.
-A justiça protege o homem de conduta íntegra, mas o pecado arruína o malfeitor.
-Há quem se considere rico, não tendo nada,
-e quem se considere pobre, tendo uma grande fortuna.
-A riqueza de um homem é resgate para a sua vida, mas o pobre não ouve ameaças.
-A luz dos justos dá alegria;
-a lâmpada dos malfeitores extinguir-se-á.
-Do orgulho só resulta discórdia,
-mas com os que aceitam conselho está a sabedoria.
-A fortuna ilusória vale pouco,
-mas quem junta por sua mão enriquece.
-A esperança adiada aflige o coração,
-mas o desejo realizado é uma árvore de vida.
-Aquele que menospreza a palavra será penhorado, mas o que respeita o mandamento será recompensado. A instrução do sábio é fonte de vida
-para afastar dos laços da morte.
-O bom senso alcança favor,
-mas o caminho dos traidores é interminável.
-Todo aquele que é prudente age com discernimento, mas o insensato expõe a estupidez.
-Um mau mensageiro faz cair em desgraça,
-mas o enviado fiel traz a cura.
-O que despreza o ensinamento terá miséria e vergonha, mas aquele que observa a correção será honrado.
-Um desejo que se realiza é doçura para a alma; afastar-se do mal é abominação para os insensatos. Anda com os sábios e sê sábio;
-quem acompanha os insensatos vai sair-se mal.
-A desgraça persegue os pecadores;
-os justos serão recompensados com o bem.
-Quem é bom deixa herança para filhos e netos,
-mas a fortuna do pecador está reservada para os justos. No campo de rebusco dos pobres há comida abundante, mas pode perder-se por falta de justiça.
-Aquele que poupa o chicote odeia o seu filho; aquele que o ama procura corrigi-lo a tempo. O justo come para satisfazer a sua fome,
-mas o ventre dos malfeitores é insaciável.
-Comportamento do sábio e do insensato
-A sabedoria das mulheres edificou a sua casa,
-a estupidez destrói-a com as suas mãos.
- Aquele que caminha na sua justiça teme o Senhor; o que percorre caminhos tortuosos despreza-o.
- Da boca do estulto brota a arrogância, mas os lábios dos sábios resguardam-nos.
- Onde não há bois, a manjedoura está vazia,
-pois na força do touro está a abundância de produtos.
- A testemunha de verdade não engana,
-mas uma testemunha falsa profere mentiras.
- O insolente procura a sabedoria e não a encontra; para o inteligente o conhecimento é fácil.
- Sai da frente do homem insensato,
-em cujos lábios não encontras conhecimento.
- A sabedoria do astuto leva-o a compreender o seu caminho; a estupidez dos insensatos é um engano.
- A culpa torna arrogantes os estultos
-e entre os que são retos reina a benevolência. O coração conhece a amargura da sua alma e nada estranho interfere na sua alegria.
-A casa dos malfeitores será destruída,
-mas a tenda dos homens retos florescerá.
-Há caminhos que parecem retos aos olhos de um homem,
-mas, no fim, são caminhos de morte.
-Mesmo no sorrir o coração pode sofrer,
-pois no fim do sorriso a alegria pode tornar-se aflição. Um coração desleal está satisfeito com os seus caminhos e o homem de bem, com as suas obras.
-O ingénuo dá crédito a qualquer palavra,
-mas o experiente está atento aos seus passos.
-O sábio teme e, por isso, afasta-se do mal; o insensato lança-se e sente-se seguro.
-O homem que se irrita comete loucuras; o homem de intrigas torna-se odioso.
-Os ingénuos tiveram por herança a estupidez,
-mas os experientes serão coroados de conhecimento.
-Os maus prostram-se diante dos bons e os malfeitores, às portas do justo.
-O pobre é odiado até pelo seu companheiro; mas são muitos os amigos do rico.
-Aquele que despreza o seu próximo, comete pecado; mas feliz aquele que é generoso para com os pobres. Acaso não erram os que maquinam o mal?
-Mas os que constroem o bem terão misericórdia e fidelidade.
-Em todo o esforço há algum proveito,
-mas palavras só de boca produzem apenas indigência.
-A coroa dos sábios é a sua riqueza;
-a estupidez dos insensatos é só estupidez. A testemunha fiel põe vidas a salvo; aquele que profere mentiras é impostor.
-No temor do Senhor há grande segurança
-e os seus filhos terão refúgio.
-O temor do Senhor é fonte de vida que afasta dos laços da morte.
-Uma população numerosa é o esplendor de um rei, a falta de povo é a ruína de um príncipe.
-O que é paciente é rico em prudência;
-o impulsivo eleva ao máximo a estupidez. Um coração desprendido é a vida do corpo, mas a inveja corrói os ossos.
-O que oprime o pobre injuria o seu criador,
-mas honra-o aquele que se compadece do indigente.
-O malfeitor será derrubado pela sua maldade;
-o justo, porém, mesmo na morte, está confiante.
-A sabedoria repousa no coração ponderado e até entre os insensatos é reconhecida.
-A justiça engrandece um povo;
-o pecado é a decadência dos povos.
-A benevolência do rei é para o servo prudente; mas o seu furor é para aquele que o envergonha.
-O que o Senhor aprecia ou odeia
-Uma resposta calma afasta a ira;
-uma palavra dura aumenta a fúria.
- A língua dos sábios melhora o conhecimento; mas a boca dos insensatos espalha loucura.
- Em todo o lugar estão os olhos do Senhor a observar os maus e os bons.
- A brandura de língua é uma árvore de vida, mas a perversidade dela quebra o espírito.
- O estúpido despreza o ensinamento do seu pai,
-mas o que aceita a repreensão mostra que é esperto.
- Na casa do justo há grande abundância; mas o produto do malfeitor esvai-se.
- Os lábios dos sábios espalham conhecimento;
-o coração dos insensatos não é correto.
- O sacrifício dos malfeitores é abominação para o Senhor,
-mas a súplica dos retos é do seu agrado.
- O Senhor abomina o caminho do malfeitor, mas ama aquele que persegue a justiça.
-Há um castigo severo para quem abandona o caminho; aquele que odeia a advertência morrerá.
-O mundo dos mortos e da perdição está diante do Senhor; quanto mais os corações dos seres humanos!
-O arrogante não gosta de quem o repreende nem vai ao encontro dos sábios.
-O coração alegre torna feliz o semblante;
-mas, quando há dor no coração, o espírito fica abatido.
-Um coração inteligente procura o conhecimento; mas a boca dos insensatos alimenta-se de loucura.
-Todos os dias do pobre são maus;
-mas para os de coração feliz são um banquete perene.
- Mais vale pouco com temor do Senhor
-do que um grande tesouro com muita inquietação.
- Mais vale um prato de legumes com amor
-do que um vitelo gordo com ódio.
-O homem irado provoca a disputa; mas o lento à ira acalma a contenda.
-O caminho do preguiçoso é uma sebe de espinhos; mas a rota dos justos é plana.
-O filho sábio dá alegria ao seu pai;
-o homem insensato despreza a sua mãe.
-A loucura é alegria para quem não tem coração;
-mas o homem de inteligência segue direito o seu caminho.
-Os planos falham por falta de aconselhamento, mas com muitos conselheiros realizam-se.
-Uma resposta da sua boca é uma alegria para o homem. E como é agradável uma palavra no tempo certo!
-Para o entendido, o caminho da vida é para cima,
-de modo a afastar-se do mundo dos mortos, lá em baixo.
- O Senhor destrói a casa dos arrogantes,
-mas ergue os marcos na propriedade da viúva.
- Os pensamentos de maldade são abomináveis ao Senhor; mas são puras as palavras de agrado.
-O que se entrega à ganância destrói a sua casa; mas o que detesta o suborno viverá.
-O coração do justo reflete para responder; mas a boca dos malfeitores expele maldades.  O Senhor está longe dos malfeitores,
-mas escuta a súplica dos justos.
-O brilho dos olhos alegra o coração; uma boa notícia dá vigor aos ossos.
-O ouvido que escuta uma repreensão salutar habita no meio dos sábios.
-O que rejeita o ensinamento despreza-se a si mesmo; mas quem escuta a repreensão adquire coração.
-O temor do Senhor é educação para a sabedoria; e antes da glória está a humildade.
-O Senhor guia os humanos
-São do homem os planos do coração; mas é do Senhor a resposta da língua.
-Todas as ações do homem parecem limpas a seus olhos; mas quem examina as intenções é o Senhor.
-Confia ao Senhor as tuas obras e os teus projetos realizar-se-ão.
- O Senhor fez todas as coisas com a sua finalidade
-e fez também o malfeitor para o dia da desgraça.
-Qualquer coração arrogante é abominação para o Senhor:
-cedo ou tarde, ele não ficará impune.
-Pela misericórdia e fidelidade a culpa é expiada
-e pelo temor de Deus se evita o mal.
-Quando o Senhor se compraz com os caminhos de alguém, põe-no em paz até com os seus inimigos.
-Mais vale pouco com justiça
-que muitos rendimentos sem equidade.
- O coração do homem planeia o seu caminho, mas o Senhor é que dá firmeza aos seus passos.
-Sentenças sobre o rei
-Há uma sentença de autoridade nos lábios do rei: em julgamento a sua boca não erra.
-O fiel das balanças justas é do Senhor; todos os pesos do saco são obra sua.
-Praticar o mal é coisa abominável para os reis,
-pois um trono firma-se pela justiça. Os lábios de justiça têm o agrado do rei; ele ama o que fala com retidão.
-A indignação do rei é como os mensageiros da morte; porém, o homem sábio é capaz de a aplacar.
-No brilho do rosto do rei há vida
-e a sua benevolência é como nuvem de chuva primaveril.
-Sabedoria e retidão
-Adquirir sabedoria é muito melhor que ouro; adquirir inteligência é mais precioso que prata. A estrada dos retos é desviar-se do mal;
-o que guarda o seu caminho conserva a vida.
-Antes da ruína está o orgulho
-e antes do tropeçar, a arrogância.
-É melhor ser modesto com os humildes que partilhar despojos com os orgulhosos.
-Quem está atento à palavra encontra a felicidade;
-feliz aquele que confia no Senhor.
-O sábio de coração é considerado inteligente; a doçura dos lábios dá mais força ao ensino.
-O bom senso é fonte de vida para quem o possui;
-o castigo dos estúpidos é a estupidez.
-O coração do sábio está atento à sua boca, e nos seus lábios dá mais valor à lição.
-Palavras agradáveis são um favo de mel,
-são doçura para a alma e saúde para os ossos!
-Há caminhos que parecem retos aos olhos do homem,
-mas no seu fim são caminhos de morte. A fome do trabalhador trabalha para ele; é a sua boca que o estimula.
-O homem perverso é o forno da desgraça
-e nos seus lábios há como que um fogo devorador.
-O homem desordeiro espalha a discórdia e o agitador afasta o amigo.
-O homem violento seduz o seu próximo
-e fá-lo andar por um caminho que não é bom. Aquele que, maquinando desordens, fecha os olhos e cerra os lábios já consumou a desgraça.
-Cabelo branco é coroa de esplendor que se alcança no caminho da justiça.
-É melhor ser paciente que ser um herói;
-é melhor dominar-se a si mesmo que conquistar uma cidade.
-É no regaço que se lançam os dados,
-mas a sentença deles vem toda do Senhor.
-Prudência no falar e no agir
-É melhor um pedaço de pão seco com sossego que uma casa cheia de banquetes em discórdia.
- Um servo inteligente prevalece sobre um filho que envergonha
-e entre os irmãos terá parte na herança.
- O crisol é para a prata e a fornalha para o ouro, mas é o Senhor quem examina os corações.
- O que faz o mal dá atenção aos lábios maldosos; o que mente dá ouvidos à língua maliciosa.
- Quem troça do pobre ultraja o seu criador
-e o que se ri de uma desgraça não ficará impune.
- Os filhos dos filhos são a coroa dos anciãos e a glória dos filhos são os seus pais.
- Não convém ao insensato uma linguagem elevada
-e muito menos ao nobre, uma linguagem mentirosa.  O suborno é uma pedra preciosa para quem o faz; para onde quer que se vire é bem-sucedido.
- Quem encobre uma falta procura a amizade; quem a divulga por palavras afasta os amigos. A repreensão atinge mais fundo no inteligente que cem açoites num insensato.
-O perverso não procura senão rebeldia,
-mas contra ele será enviado um mensageiro cruel. Antes encontrar um urso a quem tiraram os filhos que um insensato com a sua loucura.
-A quem retribui o mal em troca do bem a desgraça jamais sairá da sua casa.
-Começar uma disputa é um rombo num dique;
-há que desistir antes que a contenda rebente.
- O que justifica o malfeitor e o que condena o justo,
-são ambos uma abominação diante do Senhor.
-Para que serve o insensato ter na mão
-o preço para comprar a sabedoria, se não tem entendimento?
-O amigo ama em todo o tempo,
-nasceu para ser um irmão na desgraça.
-É insensato aquele que dá um aperto de mão,
-tornando-se fiador do seu próximo.
-Aquele que ama o crime ama a discórdia
-e o que ergue muito a soleira da sua porta procura tropeço.
-O de coração falso não encontra a felicidade
-e o que tece intrigas com língua perversa cai na desgraça.
-O que gera um insensato é para sua aflição
-e o pai do louco não terá alegria. Um coração alegre favorece a cura; mas um espírito abatido seca os ossos.
-O malfeitor aceita um suborno às escondidas e assim perverte as vias da justiça.
- No rosto do inteligente há sabedoria;
-mas os olhos do insensato estão nos confins da terra.
-Um filho insensato é um tormento para o seu pai
-e uma amargura para aquela que o deu à luz.
-Se não é bom punir o justo,
-bater nos que são nobres está contra o que é reto.
-Aquele que modera as suas palavras possui conhecimento;
-o que tem espírito calmo é um homem inteligente. Até o insensato quando se cala é considerado sábio; fechando os seus lábios, é inteligente.
-Importância da palavra
-O que persegue o seu desejo fica isolado
-e irrita-se perante qualquer êxito.
- O insensato não encontra prazer na inteligência, mas apenas em revelar o que tem no coração.
- Quando vem o criminoso, vem também a desonra; e com o desprezo vem a ignomínia.
- As palavras da boca de um homem são águas profundas, torrente transbordante, fonte de sabedoria.
- Não é bom favorecer o malfeitor
-para prejudicar o justo no julgamento.
-Os lábios do insensato conduzem à contenda, e a sua boca chama por açoites.
- A boca do insensato é para ele a ruína
-e os seus lábios são uma armadilha para a sua vida.
- As palavras do intriguista são como guloseimas:
-descem até ao fundo das entranhas.
- O que é desleixado no seu trabalho
-é irmão do que provoca a destruição.
-O nome do Senhor é uma torre que dá força;
-o justo corre para ela e fica em segurança. A fortuna do rico é a sua cidade fortificada; como uma muralha alta, ela é a sua sebe.
- Antes da ruína o coração do homem exalta-se, mas antes da glória está a humildade.
-Aquele que responde antes de ouvir mostra que é estúpido e ridículo.
-O espírito do homem suporta-o na sua aflição,
-mas quem levantará um espírito abatido?
-O coração do inteligente adquire conhecimento e o ouvido dos sábios procura conhecimento.
-A dádiva feita por um homem dá-lhe largueza e leva-o até junto dos grandes.
-O primeiro a apresentar a sua causa parece justo, mas vem o seu adversário que o contradiz.
-O tirar à sorte acaba com as contendas e faz a separação entre os poderosos.
-Um irmão ofendido é mais que uma praça forte; as contendas são como os ferrolhos de um castelo. Um homem satisfaz-se com o que sai da sua boca e sacia-se com o que proferem os seus lábios.
-A morte e a vida dependem da língua;
-os que se prendem a ela comerão do seu fruto. Aquele que encontra uma mulher encontra um bem e obtém a benevolência do Senhor.
-O pobre fala por súplicas e o rico responde com dureza.
-Há companheiros que levam à desgraça
-e há amigos mais afeiçoados que um irmão.
-Várias sentenças
-É melhor um pobre que vive com honestidade do que alguém de lábios perversos e insensato.
- Também o desejo sem conhecimento não é bom; e quem apressa os seus passos extravia-se.
- A estupidez do homem arruína o seu caminho
-e, depois, o seu coração revolta-se contra o Senhor.
- A fortuna junta numerosos amigos,
-mas o pobre até pelo seu amigo é posto de parte.
- A testemunha falsa não ficará impune
-e o que profere mentiras não escapará.
- Muitos são os que lisonjeiam um nobre
-e todos se fazem amigos do homem que dá presentes.
- Ao pobre, todos os seus irmãos o odeiam; até alguns dos seus amigos se afastam dele!
-Ele procura algumas palavras, mas não as tem.
- Quem adquire sensatez ama a sua vida;
-quem guarda o entendimento encontra a felicidade.
- A testemunha falsa não ficará impune
-e o que profere mentiras perecerá.
-Não convém que o insensato viva entre delícias,
-e muito menos que um escravo domine os chefes.
-O bom senso do homem domina a sua ira
-e a sua grandeza é passar por cima de uma ofensa.
-A ira do rei é um rugido de leão
-e a sua benevolência é como orvalho sobre a erva.
-Um filho insensato é um tormento para o seu pai
-e as intrigas de uma mulher são uma goteira contínua.
-Casa e fortuna são herança dos pais,
-mas uma mulher sensata vem do Senhor.
-A preguiça faz cair em sonolência e a pessoa indolente passará fome.
-O que guarda um mandamento guarda a sua vida, mas o que despreza os seus caminhos morrerá.
-Quem dá ao pobre empresta ao Senhor
-e Ele lhe retribuirá a benfeitoria.
-Corrige o teu filho enquanto há esperança, mas não exageres até ao ponto de o matar. O homem impetuoso deverá ser punido; se o poupares, sê-lo-á ainda mais.
-Escuta o conselho e aceita o ensinamento, para que possas ser um sábio no teu futuro. São muitos os planos no coração do homem, mas é o desígnio do Senhor que prevalece. O desejável num homem é a sua fidelidade;
-é melhor ser pobre que ser um homem mentiroso.
-O temor do Senhor conduz à vida
-e deixa dormir satisfeito, sem perigo de pesadelo.
-O preguiçoso leva a mão ao prato, mas não é capaz de a levar à boca.
-Castiga um insolente e o ingénuo ficará esperto; repreende o inteligente e ele adquirirá conhecimento. Aquele que maltrata o seu pai e afugenta a sua mãe
-é um filho que envergonha e desonra.
-Meu filho, se deixas de escutar o ensinamento, vais afastar-te das palavras do conhecimento. A testemunha perversa ri-se do direito
-e a boca dos malfeitores devora a iniquidade.
-Há castigos preparados para os insolentes e açoites, para as costas dos insensatos.
-Outras sentenças para a vida
-O vinho é zombador e o licor, desordeiro!
-Todo o que nele se perde não será sábio.
- A ira do rei é como um rugido de leão, aquele que o provoca põe em risco a sua vida.
- É uma honra para o homem afastar-se das contendas,
-mas qualquer estúpido as faz rebentar.
- O preguiçoso não lavra desde o outono;
-no tempo da colheita procura, mas nada encontra.
- Águas profundas é o plano no coração do homem,
-apenas o homem inteligente as consegue atingir.  Muitos homens são proclamados bondosos, mas um homem fiel, quem o achará?
- O justo caminha na sua integridade;
-ditosos são os seus filhos, depois dele.
- O rei que se senta no trono de justiça varre com o seu olhar toda a maldade.
- Quem poderá dizer: «O meu coração está puro,
-estou limpo do meu pecado?»
- Quem poderá dizer: O meu coração está puro,
-estou limpo do meu pecado?
-Usar dois pesos ou duas medidas
-são duas coisas abomináveis para o Senhor.
-É pelos seus atos que um jovem se dá a conhecer: se é puro ou se é reto o seu proceder.
-O ouvido que ouve e o olho que vê, ambas as coisas foi o Senhor quem as fez.
-Não sejas amigo do sono para não empobreceres; abre os teus olhos e sacia-te de pão.
-«Ruim, ruim!», diz o comprador,
-Ruim, ruim!, diz o comprador,
-mas, ao afastar-se, gaba-se da compra.
-Pode haver ouro e pérolas em abundância;
-mas a coisa mais preciosa são os lábios de conhecimento. Toma a veste do que se tornou fiador de um estrangeiro, exige dele o penhor que deve aos estranhos.
-O pão da mentira é saboroso para o homem, mas, depois, a sua boca fica cheia de cascalho. Consolida os projetos por meio do conselho e conduz a guerra com boas estratégias.
-O que anda em intrigas revela os segredos; não te comprometas com gente linguareira.
-Para aquele que amaldiçoa o seu pai ou a sua mãe a sua lâmpada apagar-se-á no meio das trevas.
-Uma herança adquirida à pressa no início,
-não será abençoada no final.
-Não digas: «Vou retribuir-lhe o mal!» Confia no Senhor e Ele te salvará.
-Não digas: Vou retribuir-lhe o mal! Confia no Senhor e Ele te salvará.
-Usar dois pesos é abominação para o Senhor;
-e não é bom ter balanças falsas.
-Os passos do homem dependem do Senhor; e que entende um homem do seu caminho?
- É uma armadilha para o homem declarar algo como coisa santa
-e refletir, só depois de fazer os seus votos.
-O rei sábio varre os malfeitores e faz passar sobre eles a roda.
-A alma do homem é a lâmpada do Senhor, que explora todos os recantos das entranhas. A misericórdia e a fidelidade protegem o rei;
-pois é na misericórdia que seu trono está bem assente.
-O brilho dos jovens é a sua força
-e o esplendor dos velhos é o cabelo branco.
-As cicatrizes da ferida limpam o mal
-e as pancadas, os recantos das entranhas.
-O agir do justo e do malvado
-O coração do rei é como correntes de água na mão do Senhor: Ele dirige-o para onde quer.
-Qualquer caminho parece reto aos olhos do homem, mas o Senhor é que pesa os corações.
-Praticar a justiça e o direito
-é, para o Senhor, preferível ao sacrifício.
- Olhos altivos e coração soberbo:
-o pecado é a lâmpada dos malfeitores.
-Os projetos do homem diligente resultam em ganho, mas todo aquele que se apressa cai na indigência.
-Acumular tesouros com língua mentirosa é ilusão fugidia dos que buscam a morte. A violência dos malfeitores arrasta-os, porque recusam praticar o direito.
-O caminho do homem perverso é tortuoso, mas a ação do inocente é reta.
-É melhor habitar num canto do terraço
-que com uma mulher intriguista numa casa ampla.
-A alma do malfeitor anseia pelo mal;
-nem o seu amigo encontra graça diante dos seus olhos. Com a punição do insolente o ingénuo fica mais sábio e adquire conhecimento quando o sábio prospera.
- Aquele que é justo observa a casa do malfeitor e precipita os malfeitores na desgraça.
-Aquele que fecha o seu ouvido ao clamor do pobre há de clamar também ele e ninguém lhe responderá. Uma oferta feita em segredo acalma a ira
-e um presente no bolso, o mais ardente furor.
-É uma alegria para o justo cumprir o direito
-e um terror para os que praticam a iniquidade.
-O homem que se extravia do caminho do bom senso
-irá repousar na assembleia dos defuntos.
-Aquele que aprecia as festas ficará indigente;
-o que aprecia vinho e perfumes não enriquecerá.
-O malfeitor serve de resgate para o justo;
-e o traidor, para troca com os homens retos.
-É melhor habitar numa terra de deserto
-que com uma mulher de intrigas e mau humor.
-Na habitação do sábio há tesouros preciosos e perfume, mas o homem estúpido dissipa tudo isso.
-Aquele que persegue a justiça e a misericórdia
-encontrará a vida, a justiça e a glória.
-O sábio sobe à cidade dos guerreiros
-e derruba a fortaleza em que ela confiava. Aquele que guarda a sua boca e a sua língua guarda a sua alma das angústias.
-Quem é insolente e arrogante tem por nome zombador; ele comporta-se com orgulho arrogante.
-A vontade do preguiçoso o matará,
-porque as suas mãos se recusam a trabalhar.
-Passa todo o dia a desejar, a desejar,
-mas o justo dá sem nada reservar.
-O sacrifício dos malfeitores é abominável, sobretudo se o oferecem com má intenção. A testemunha mentirosa perecerá,
-mas quem sabe escutar pode sempre falar.
-O malfeitor mostra força no seu semblante,
-porém o que é reto sabe distinguir os seus caminhos.
-Não há sabedoria nem inteligência
-nem conselho que prevaleça contra o Senhor. O cavalo está preparado para o dia do combate, mas a vitória pertence ao Senhor.
-Diversas recomendações
-Um bom nome é preferível a grandes riquezas e uma boa reputação é preferível a prata e o ouro.
- O rico e o pobre encontram-se
-em que foi o Senhor que os fez a ambos.
- O esperto vê o perigo e esconde-se,
-mas os ingénuos passam e sofrem as consequências.  O resultado da humildade é o temor do Senhor mais a riqueza, a honra e a vida.
- Há espinhos e armadilhas no caminho do perverso, mas quem quer conservar a sua vida fica longe deles.
- Educa o jovem no que diz respeito ao seu caminho;
-mesmo quando envelhecer, não se desviará dele.
- O rico domina sobre os pobres
-e o que pede emprestado é escravo do seu credora.  Aquele que semeia maldade recolhe iniquidade; a vara da sua ira acabará com ele.
-e o que pede emprestado é escravo do seu credor.  Aquele que semeia maldade recolhe iniquidade; a vara da sua ira acabará com ele.
- O homem de olhar bondoso será abençoado, porque deu do seu pão ao pobre.
-Expulsa o insolente e acabará a discussão e terminará a discórdia e a ofensa.
- Aquele que ama a integridade de coração,
-e é generoso nas suas palavras, o rei é seu amigo. Os olhos do Senhor favorecem o conhecimento, mas Ele confunde as declarações do traidor.
-O preguiçoso diz para consigo: «Há um leão lá fora;
-vou ser morto no meio das ruas.»
-O preguiçoso diz para consigo: Há um leão lá fora;
-vou ser morto no meio das ruas.
- A boca das mulheres estranhas é um fosso profundo; nele cairá o que for amaldiçoado pelo Senhor.
-A estupidez está ligada ao coração do jovem,
-mas a vara da disciplina afastá-la-á para longe dele.
-Quem oprime o pobre acaba por enriquecê-lo;
-quem dá ao rico só traz empobrecimento.
-Convite à escuta
-Inclina o teu ouvido e escuta as palavras dos sábios e aplica o teu coração ao meu conhecimento, porque é agradável que as guardes no teu interior. e estejam sempre presentes nos teus lábios.
-Para que a tua confiança esteja no Senhor,
-vou instruir-te hoje também a ti.
-Foi por isso que outrora escrevi para ti palavras de conselho e conhecimento,
-para te dar a conhecer palavras certas e verdadeiras
-e responderes com palavras de verdade aos que te enviam.
-Conselhos ditados pelos sábios
- Não explores o pobre, porque já é pobre; nem esmagues o aflito à porta da cidade. Porque o Senhor defenderá a causa deles
-e despojará da vida os que os despojam a eles. Não te tornes amigo de um homem colérico, nem te aproximes de um impetuoso,
-para não aprenderes os seus caminhos
-e seres apanhado numa armadilha contra a tua vida.
-Não sejas dos que, com um aperto de mão, se tornam fiadores de dívidas de outrem. Pois, se não tiveres com que pagar,
-até te vão tirar a cama de debaixo de ti. Não mudes os marcos de antigamente, que foram postos pelos teus pais.
-Vês um homem diligente no seu trabalho: ele apresentar-se-á ao serviço diante de reis,
-mas nunca se apresentará diante de gente obscura.
-Dominar a gula
-Quando te sentares à mesa com uma autoridade, observa com cuidado quem está diante de ti;
- põe uma faca na tua garganta, se estiveres com muito apetite.
- Não cobices os seus manjares, porque são um pão enganador.
- Não te afadigues para adquirir riqueza; tira daí o teu entendimento.
- Os teus olhos voam à procura dela, mas não há, pois ela criou asas para si
-e como a águia voou pelos céus.
- Não comas o pão de quem tem mau olhar, nem cobices os seus manjares,
- pois serão como um cabelo na garganta.
-Ele dir-te-á: «Come e bebe»,
-Ele dir-te-á: Come e bebe,
-mas o seu coração não está contigo.
- Vomitarás o bocado que comeste
-e desperdiçarás as tuas palavras amáveis.
- Não fales aos ouvidos do insensato,
-porque ele desprezará o bom senso das tuas palavras.
-Não mudes os marcos de antigamente, nem entres no campo dos órfãos, porque o seu vingador é poderoso
-e defenderá a causa deles contra ti.
-Conselhos de um pai
-Faz com que a instrução chegue ao teu coração
-e aos teus ouvidos cheguem as palavras de conhecimento.
-Não poupes a correção ao jovem;
-ainda que lhe batas com a vara, ele não morre.
-Tu lhe baterás com a vara,
-e a sua vida será resgatada do mundo dos mortos.
-Meu filho, se o teu coração for sábio, o meu coração alegrar-se-á também. As minhas entranhas rejubilarão,
-quando os teus lábios proferirem palavras retas.
-Que o teu coração não tenha inveja dos pecadores, mas antes permaneça sempre no temor do Senhor, porque há de haver certamente um futuro
-e a tua esperança não será frustrada.
-Escuta, meu filho, e sê sábio,
-orienta o teu coração pelo caminho reto. Não te juntes com bebedores de vinho, ou com aqueles que se enfartam de carne, pois o ébrio e o glutão empobrecem
-e a sonolência vesti-los-á de andrajos.
-Escuta o teu pai, que te gerou,
-e não desprezes a tua mãe por ser velha.
-Adquire a verdade
-e não vendas a sabedoria, a educação e a inteligência.
-O pai do justo exultará de alegria
-e quem gerou um sábio sentir-se-á feliz por ele.
-Que o teu pai e a tua mãe se alegrem e exulte aquela que te deu à luz.
-Meu filho, entrega-me o teu coração,
-e que os teus olhos prefiram os meus caminhos;
-pois a mulher estranha é um fosso profundo e a estrangeira, um poço estreito.
-Ela põe-se à espreita como um salteador
-e entre os homens, multiplica os transgressores.
-Retrato da embriaguez
-De quem são os «ais», de quem os «uis»?d
-De quem são os ais, de quem os uis?
-De quem são as contendas, de quem as queixas? De quem são as pancadas sem motivo?
-De quem os olhos avermelhados?
-São dos que se deixam arrastar pelo vinho, dos que vão à procura de bebidas misturadas. Não olhes para o vinho, como ele é vermelho, como brilha no copo e como escorre direito! No fim, ele morde como uma serpente
-e lança veneno como uma víbora.
-Os teus olhos verão coisas estranhas,
-e o teu coração dirá palavras descontroladas.
-E tu estarás como alguém a dormir em alto mar, como alguém que dorme no cimo de um mastro. «Espancaram-me, mas não fiquei doente; bateram-me, mas não senti nada.
-Quando acordo, volto a procurá-lo de novo.»
-E tu estarás como alguém a dormir em alto mar, como alguém que dorme no cimo de um mastro. Espancaram-me, mas não fiquei doente; bateram-me, mas não senti nada.
-Quando acordo, volto a procurá-lo de novo.
-Provérbios sobre a vida prática
- Não tenhas inveja dos homens maus nem desejes estar com eles,
-porque o seu coração só medita violência
-e os seus lábios só falam em maldades.
-É com a sabedoria que se edifica uma casa
-e com a inteligência que ela se consolida.
-É pelo conhecimento que se enchem as suas salas
-com toda a fortuna preciosa e agradável.
-Um herói sábio é poderoso
-e um homem de conhecimento aumenta a sua força.
-É com estratégias que deves empreender a guerra
-e a vitória estará no grande número de conselheiros.
-A sabedoria está demasiado alta para o estulto;
-ele não abrirá a boca à porta da cidade.
-Aquele que só pensa em fazer o mal será chamado homem de intrigas. O plano do estulto é um pecado
-e a arrogância é uma abominação para o homem.
-Se desfaleces no dia da adversidade, muito fraca é a tua força.
-Livra os que estão destinados à morte
-e poupa os que vão a cambalear para o suplício.
-Se disseres: “Não sabíamos disso”,
-aquele que sonda os corações sabia-o certamente. Aquele que protege a tua vida bem o sabe;
-Ele retribuirá a cada ser humano segundo as suas obras.
-Meu filho, come mel, porque é bom;
-o favo é doce ao teu paladar.
-Considera, pois, que a sabedoria é para a tua vida. Se a encontrares, haverá um futuro;
-e a tua esperança não será frustrada.
-Não espreites para a morada do justo, ó malfeitor;
-não destruas a sua habitação!
-Pois sete vezes cai o justo e se levanta,
-mas os malfeitores tropeçarão na desgraça. Quando o teu inimigo cai, não te alegres; quando ele tropeça, não rejubile o teu coração, não suceda que o Senhor o veja e lhe desagrade e afaste dele a sua ira.
-Não te irrites com os perversos nem invejes os malfeitores.
-Porque para os maus não haverá futuro e a lâmpada dos malfeitores apagar-se-á. Meu filho, teme o Senhor e o rei,
-não te metas com nenhum dos dois,
-porque inesperadamente surgirá deles a desgraça,
-e a ruína que vem de ambos, quem a conhece?
-Não ter preferências
-Também estas são sentenças dos sábios: não é bom ser parcial no julgamento. Aquele que diz ao malfeitor: “Tu és justo”,
-os povos amaldiçoam-no e as nações detestam-no. Aqueles que o repreendem serão vistos com agrado e sobre eles virá uma bênção de felicidade.
-Aquele que responde corretamente
-é como quem dá um beijo nos lábios. Põe em ordem as tuas tarefas no exterior e cuida daquelas que tens no campo; depois, sim, poderás construir a tua casa.
-Não sejas testemunha contra o teu próximo sem razão.
-Quererás acaso desorientar com as tuas palavras? Não digas: “Como ele me fez assim lhe hei de fazer; retribuirei a cada um segundo as suas obras!”
-O preguiçoso
-Passei junto ao campo do homem preguiçoso e junto à vinha do homem sem entendimento; e tudo estava cheio de urtigas,
-as silvas cobriam o chão
-e o seu muro de pedra estava destruído.
-Ao ver isto refleti no meu coração;
-vi e dali tirei uma lição.
-Um pouco a dormir, um pouco a dormitar,
-um pouco a cruzar as mãos para se deitar,
-e a pobreza chegará a ti, rondando como um ladrão,
-e a miséria, como um homem armado.
-IV.	OUTROS PROVÉRBIOS DE SALOMÃO (, – ,)
-Sentenças, conselhos e recomendações
-Também estes são provérbios de Salomão,
-recolhidas pelos homens de Ezequias, rei de Judá:
- É glória de Deus ocultar o sentido das coisas, é glória dos reis investigá-las.
-É glória de Deus ocultar o sentido das coisas, é glória dos reis investigá-las.
- Nem o céu pela altura, nem a terra pela profundidade
-nem o coração dos reis se podem investigar.
-  Retiram-se as escórias à prata
-e o ourives produzirá um vaso.
- Retira-se o malfeitor da presença do rei
-e o seu trono ficará firme na justiça.
- Não te vanglories na presença do rei
-e não permaneças no lugar dos grandes.
- Pois é melhor que te digam: “Sobe para aqui”
-que seres humilhado diante de alguém mais nobre.
-O que os teus olhos viram,
- não o leves precipitadamente a tribunal,
-pois que haverias de fazer, no fim do julgamento,
-quando o teu próximo te deixar envergonhado?
- Defende a tua causa contra o teu próximo,
-mas não reveles o segredo de outrem, não suceda que te desminta quem o ouvir, e a tua difamação não volte atrás.
-Maçãs de ouro em bandejas de prata, assim é uma palavra dita com bons modos. Anel de ouro e joias de ouro fino,
-assim é a admoestação de um sábio a um ouvido que escuta.
-Como frescura de neve em tempo de colheita, assim é o mensageiro fiel para os que o enviam: ele restabelece a alma do seu senhor.
-Nuvens e vento que não trazem chuva,
-assim é o homem que se gaba de um falso dom. Com paciência convence-se um comandante, uma língua branda consegue partir ossos.
-Encontraste mel? Come o suficiente para ti,
-não suceda que, comendo demais, tenhas de o vomitar.
-Põe raramente o pé na casa do teu vizinho,
-não suceda que, farto de ti, venha a odiar-te.
- Um dardo, uma espada ou uma flecha afiada,
-tal é o homem que dá um falso testemunho contra o seu próximo.
-Como um dente estragado e um pé sem firmeza, tal é a confiança no traidor no dia da desgraça. Como alguém que tira a capa num dia de frio, como vinagre sobre uma ferida
-assim é o que canta canções diante de um coração atribulado.
-Se o teu inimigo está com fome, dá-lhe pão para comer;
-se tem sede, dá-lhe água para beber.
-Assim retirarás brasas de cima da sua cabeça e o Senhor recompensar-te-á.
-O vento norte provoca a chuva,
-a língua dissimulada, rostos enfurecidos.
-É melhor habitar num canto do terraço
-que com uma mulher intriguista numa casa ampla.
-Água fresca para uma garganta sedenta,
-tal é uma boa notícia vinda de uma terra distante.
-Nascente enlameada e corrente poluída, assim é o justo que vacila diante do malfeitor. Não é bom comer mel em demasia,
-nem o procurar honrarias dá mais honra.
-Uma cidade arruinada e sem muralhas,
-assim é o homem que não se domina a si mesmo.
-O insensato
- Como a neve no verão e a chuva na colheita, assim a honra é imprópria para o insensato.
- Como pássaro a esvoaçar, como andorinha a voar,
-assim a maldição sem motivo deixa de atingir o objetivo.
- O chicote é para o cavalo, o freio é para o jumento e a vara, para as costas dos insensatos.
- Não respondas ao insensato conforme a sua estupidez, para não seres igual a ele, tu também.
- Responde ao insensato conforme a sua estupidez, não aconteça que ele se considere sábio a si próprio.
- Corta os pés e bebe violência
-quem envia mensagens por meio de um insensato.
- Como cambaleiam as pernas de um coxo
-assim também um provérbio na boca de insensatos.
-É como quem prende uma pedra na funda aquele que presta homenagem a um insensato.
-Como um ramo de espinheiro na mão de um bêbado, assim é um provérbio na boca dos insensatos.
-Tal como um arqueiro que aponta a tudo
-assim é quem contrata um insensato ou qualquer um que passa.
-Como o cão que volta ao seu vómito,
-assim é o insensato ao repetir a sua loucura.
-Viste alguém que se considera a si mesmo como sábio? Há mais esperança para um insensato que para ele.
-O preguiçoso diz: “Anda uma fera no caminho,
-um leão, pelas ruas!”
-Como a porta roda sobre o seu gonzo assim o preguiçoso, no seu leito.
-O preguiçoso afunda a sua mão no prato, mas cansa-se de a levar à boca.
-O preguiçoso considera-se a si mesmo mais sábio que sete outros que respondem com bom senso.
-Como quem agarra um cão pelas orelhas
-é alguém que passa e se mete numa questão que não é sua.
-Como um homem enlouquecido a lançar setas, dardos e morte,
-assim é o homem que engana o seu próximo
-e diz: “Eu estava apenas a brincar!”
-Por falta de lenha o fogo apaga-se,
-onde não há caluniador acaba-se a discussão.
-Como carvão nas brasas e lenha no fogo,
-assim o homem de intrigas atiça uma contenda. As palavras do caluniador são como guloseimas que penetram até ao fundo das entranhas.
-Como prata de escórias aplicada em barro,
-assim são os lábios ardentes e um coração perverso. Aquele que odeia dissimula com os seus lábios, mas no seu interior colocou o engano.
-Quando ele torna graciosa a sua voz, não confies nele,
-porque há sete abominações no seu coração;
-pois o ódio está encoberto com fingimento,
-mas a sua malícia será descoberta na assembleia.
-Quem abre uma cova há de cair nela
-e a pedra voltará a cair sobre aquele que a rolou. A língua mentirosa odeia aqueles a quem esmaga e a boca aduladora provoca a ruína.
-Vaidade, ira e inveja
- Não te vanglories do dia de amanhã, porque não sabes o que um dia pode gerar.
- Que seja outro a louvar-te e não a tua boca; seja um estranho e não os teus lábios.
- Pesada é a pedra e a areia é uma carga,
-mas a cólera do estulto pesa mais que ambas.
- A ira é cruel e o furor, impetuoso, mas quem resistirá diante da inveja?
-Amizade e cuidado
- É melhor uma correção declarada que uma amizade dissimulada.
- As pancadas de um amigo são leais,
-mas os beijos de um inimigo são enganadores.
- O apetite saciado calca aos pés o favo de mel,
-mas a quem tem fome qualquer amargo sabe a doce.
- Como a ave que vagueia fora do seu ninho assim é o homem errante fora da sua casa.
- O perfume e o incenso alegram o coração:
-assim a doçura de um amigo vinda do fundo da alma.
-Não abandones o teu amigo nem o amigo do teu pai
-e não entres em casa do teu irmão no dia do teu infortúnio.
-Vale mais um vizinho perto que um irmão longe.
-Sê sábio, meu filho, e alegra o meu coração, pois assim posso responder a quem me insultar. O homem experiente vê o perigo e esconde-se; os ingénuos continuam e pagam por isso.
-Retém o manto de quem ficou fiador de um estranho
-e o penhor de quem foi garante de estrangeiros.
-Saudar o vizinho em voz alta de manhã cedo pode ser considerado por ele uma maldição.
-Uma goteira que pinga sem parar em dia de chuva e uma mulher intriguista são equiparáveis.
-Pretender recolhê-la é como recolher o vento ou reter o azeite na sua mão direita.
-O ferro com o ferro se molda
-e um homem molda o carácter do seu próximo.
-Quem trata da figueira comerá do seu fruto e o que cuida do seu senhor será honrado. Tal como o rosto se reflete na água,
-assim o coração do homem se reflete no próprio homem.
-O mundo dos mortos e da perdição não se satisfazem; os olhos do homem também nunca estão satisfeitos. A prata é purificada no crisol e o ouro, no forno;
-assim o homem é purificado na palavra de quem o louva.
-Ainda que esmagasses o estúpido no almofariz,
-como se pisam os grãos com o pilão, não retirarias dele a sua estupidez.
-Toma bem conhecimento do estado do teu gado e presta atenção aos teus rebanhos,
-porque a fortuna não dura sempre
-nem a coroa passa de geração em geração.
-Brota o feno e aparece a erva
-e recolhe-se a forragem dos montes;
-para te vestires tens os cordeiros
-e os bodes como preço de um campo,
-leite de cabra suficiente para teu sustento,
-para sustento da tua casa e subsistência das tuas servas.
-O justo e o malfeitor
- O malfeitor foge mesmo que ninguém o persiga, mas o justo está seguro como um leão.
-Pelos crimes de um país multiplicam-se os seus chefes,
-mas um homem inteligente e sabedor garante estabilidade.
-Um homem pobre que oprime os fracos é chuva devastadora que não dá pão.
-Os que abandonam a instrução louvam o malfeitor
-e os que guardam a instrução lutam contra eles.
-Os homens maus não compreendem o direito,
-mas os que procuram o Senhor compreendem tudo.
- Um pobre que caminha na sua integridade
-é melhor que alguém de caminhos tortuosos, mesmo sendo rico.
-Provérbios diversos
-Aquele que guarda a instrução é um filho inteligente, mas o que frequenta os devassos desonra o seu pai. Aquele que aumenta a sua fortuna com juros e usura junta-a para aquele que é generoso para com os pobres.
-Aquele que desvia o seu ouvido para não ouvir a instrução, até a sua oração se torna abominável.
-Aquele que arrasta os justos por mau caminho cairá ele mesmo no seu fosso,
-mas os íntegros terão a felicidade como herança.
-O rico considera-se a si mesmo sábio,
-mas o pobre que é inteligente desmascara-o.
-Quando os justos se alegram há grande festa;
-mas, quando os malfeitores se erguem, as pessoas escondem-se.
-Aquele que dissimula as suas faltas não prosperará; mas quem as confessa e abandona obterá misericórdia. Feliz daquele que mantém sempre algum temor;
-mas quem endurece o seu coração cairá na desgraça.
-Como um leão a rugir e um urso esfaimado,
-assim é um malfeitor que domina sobre um povo pobre. Um soberano com falta de inteligência multiplica opressões, mas quem odeia a avareza prolongará os dias.
-O homem angustiado por derramar sangue inocente está em fuga até ao sepulcro. Que ninguém o detenha! Aquele que caminha na integridade salva-se;
-mas quem vagueia entre dois caminhos cairá num deles.
-Aquele que trabalha a sua terra terá fartura de pão, mas quem persegue ilusões fartar-se-á de miséria. O homem fiel será grande em bênçãos,
-mas quem tem pressa em ser rico não ficará impune.
-Não é bom fazer diferença entre pessoas;
-mas um homem peca até por um pedaço de pão.
-O homem de olhar ambicioso corre atrás da fortuna e não sabe que a indigência virá sobre ele.
-Quem corrige alguém encontrará depois a gratidão, mais que aquele que lisonjeia.
-Quem despoja o seu pai ou a sua mãe e diz que não é pecado,
-é parceiro do homem destruidor.
-O homem ganancioso provoca contendas,
-mas quem confia no Senhor prosperará.
-O que confia no seu próprio juízo é insensato; porém, quem caminha na sabedoria há de sobreviver. Aquele que dá ao pobre não terá necessidade;
-mas quem desvia o olhar terá muitas maldições. Quando se erguem os malfeitores toda a gente se esconde; quando eles perecem aumenta o número dos justos.
-Valor da sabedoria
- O homem que reage com dureza às advertências será rapidamente destruído e sem remédio.
-Quando os justos são fortes, alegra-se o povo; quando domina o malfeitor, o povo geme. Aquele que ama a sabedoria alegra o seu pai;
-mas o que frequenta prostitutas deita a fortuna a perder.
-Pela justiça, o rei mantém o país estável;
-mas o que só pensa em extorquir arruína-o. O homem que lisonjeia o seu próximo estende uma rede para os seus passos.
-Na transgressão do malvado há uma armadilha, mas o justo rejubila e alegra-se.
-O justo reconhece a causa dos pobres;
-o malfeitor não compreende esse reconhecimento.
-Os arrogantes agitam a cidade; mas os sábios acalmam a ira.
-Se um sábio vai a juízo com um estulto,
-haverá irritação ou ridículo, mas não haverá descanso. Os homens sanguinários odeiam quem é íntegro; mas os honestos preocupam-se com a vida dele.
-O insensato dá largas a toda a sua ira; mas o sábio retém-na.
-Se um governante presta atenção a palavras de mentira, todos os que o servem são malfeitores.
-O pobre e o opressor têm isto em comum:
-é o Senhor que dá luz aos olhos de ambos. O rei que julga com justiça os humildes terá o seu trono firme para sempre.
-Vara e correção dão sabedoria;
-mas um jovem deixado a si próprio envergonha a sua mãe.
-Quando dominam os malfeitores aumenta o crime, mas os justos, verão a ruína daqueles.
-Corrige o teu filho e ele te dará descanso
-e encherá de delícias a tua alma.
-Se não há visão profética, o povo vive desenfreado; e bem-aventurado é o que guarda a instrução.
- Não se corrige um servo só com palavras; pois ele compreende, mas não responde.
-Viste um homem precipitado nas suas palavras; há mais a esperar de um insensato que dele.
-Quem, desde a infância, cobre de mimo o seu servo faz com que no futuro ele se torne rebelde.
-O homem irascível arma contendas e o colérico acumula crimes.
-O orgulho de um homem faz com que ele seja humilhado;
-mas o de espírito humilde será glorificado.
-Aquele que é cúmplice de um ladrão odeia-se a si mesmo;
-ele ouve a maldição, mas não denúncia.
-O medo do homem constitui uma cilada;
-mas quem confia no Senhor está em segurança.
-Muitos buscam o favor de quem manda,
-mas é o Senhor que garante a justiça ao homem.
-O homem perverso é abominação para os justos
-e a abominação do malfeitor é o que segue o caminho reto.
-Palavras de Agur
-Palavras de Agur, filho de Jaqué, o massaíta.
-Oráculo do homem: Estou cansado, ó Deus,
-estou cansado, ó Deus, e esgotado.
- Sou, de facto, demasiado estúpido para ser humano e não tenho inteligência de homem.
- Não aprendi a sabedoria,
-nem alcanço o conhecimento do Santo.  Quem subiu ao céu e voltou a descer? Quem recolheu o vento nas suas mãos? Quem encerrou as águas no seu manto?
-Quem ergueu todas as extremidades da terra? Qual é o seu nome e qual o nome do seu filho, se é que o conheces?
- Toda a palavra de Deus é provada no crisol. Ele é um escudo para os que nele se refugiam.
-  Não acrescentes nada às suas palavras,
-porque Ele te repreenderia e serias desmentido.
- Duas coisas eu peço da tua parte, não mas recuses antes de eu morrer:
-  afasta de mim a falsidade e a mentira; não me dês pobreza nem riqueza,
-alimenta-me apenas com a minha ração de pão.
- Não aconteça que, saciado, eu te renegue e diga: “Quem é o Senhor?”,
-ou que, na miséria, eu vá roubar e ofenda o nome do meu Deus.
-Não calunies um servo diante do seu senhor,
-não aconteça que ele te amaldiçoe e considere culpado.
-Há uma geração que amaldiçoa o seu pai
-e não abençoa a sua mãe,
-uma geração que se julga pura a seus olhos e não está limpa da sua sujidade,
-uma geração cujos olhos são tão altivos e cujas pálpebras estão levantadas, uma geração cujos dentes são espadas
-e cujos maxilares são facas,
-para devorar os humilhados da terra e os pobres de entre os homens!
-Provérbios numéricos
-A sanguessuga tem duas filhas: Dá cá! Dá cá!
-Há três coisas que nunca estão saciadas e quatro que nunca dizem: Basta!
-É o mundo dos mortos, o útero estéril,
-a terra que nunca se farta de água e o fogo que nunca diz: Basta!» O olho de quem escarnece do pai e menospreza a velhice da mãe
-a terra que nunca se farta de água e o fogo que nunca diz: Basta! O olho de quem escarnece do pai e menospreza a velhice da mãe
-será arrancado pelos corvos do vale e devorado pelas crias das águias.
-Há três coisas demasiado maravilhosas para mim
-e quatro que não compreendo:
-é o caminho da águia nos céus,
-o caminho da cobra sobre o rochedo,
-o caminho de um navio no coração do mar, e o caminho do homem pela donzela.
-Assim é o caminho da mulher adúltera,
-ela come e limpa a sua boca
-e depois diz: “Não fiz nada de mal”. Há três coisas que fazem tremer a terra e quatro que ela não pode suportar:
-é um escravo que se torna rei, um idiota que se sacia de pão,
-uma mulher desprezada quando se casa
-e uma serva que se torna herdeira da sua senhora.
-Quatro são os seres mais pequenos da terra
-e que são os mais sábios dos sábios:
-as formigas, seres sem força,
-que preparam no verão as suas provisões;
-os coelhos, seres sem poder,
-que fazem dos rochedos a sua habitação;
-os gafanhotos, que, sem terem rei,
-saem todos ordenados em esquadrão; o lagarto, que tu podes apanhar à mão, mas que está até no palácio dos reis.
-Há três coisas que têm um andar imponente
-e mesmo quatro que são imponentes a caminhar:
-o leão, o mais forte dos animais, que não recua diante de nada;
-o galo de crista levantada, o bode e o rei à frente da sua tropa.
-Se foste louco exaltando-te
-e depois refletiste, põe a mão na boca. Pois bater o leite faz sair a manteiga, apertar o nariz faz sair o sangue, provocar a ira faz sair a discórdia.
-Palavras de Lemuel
-Palavras de Lemuel, rei de Massá,
-que lhe ensinou a sua mãe:
- “Não, meu filho!
-Não, filho das minhas entranhas! Não, filho das minhas promessas!
- Não dês o teu vigor às mulheres
-nem os teus caminhos às que destroem reis.”
- Não convém aos reis, Lemuel, não convém aos reis beber vinho,
-nem a quem governa desejar bebidas fortes,
- não aconteça que bebendo se esqueçam de decretar e alterem o julgamento de todos os infelizes.
- Dai uma bebida forte àquele que desfalece e vinho aos de coração amargurado,
- para que ele beba e esqueça a sua pobreza e não se lembre mais do seu penar.
- Abre a tua boca a favor do mudo,
-em defesa de todos os desfavorecidos.
- Abre a tua boca e julga retamente
-e defende a causa do pobre e do indigente.`
-	
-
-	let tamanho = proverbs.length;
-    tamanho = tamanho - 510;
-	letraaleatoria = getRandomInt(0,tamanho);
-	for (let i = letraaleatoria; i < tamanho; i++) {
-		if (i == letraaleatoria && proverbs.charAt(i) == "."){
-			ponto1 = i;
-		}
-		if (i != letraaleatoria && proverbs.charAt(i) == "."){
-			ponto2 = i;
-			break;
-		}
-	}
-	if (ponto1 == -1){
-		for (let j = letraaleatoria; j > 0; j--) {
-			if (proverbs.charAt(j) == "."){
-				ponto1 = j;
-				break;
-			}
-		}
-	}
-	pontointermediario = ponto1 +1;
-    delayedExecution();
-}
-	function delay(ms) {
-    	return new Promise(resolve => setTimeout(resolve, ms));
-	}
-
-	async function delayedExecution() {
-    	while (contador != 2){
-        	myTxtProx();
-        	await delay(velocidade); // Wait for velocidade miliseconds
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Verificador de Números</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
         }
         
-    }
-	
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        
+        .container {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            padding: 40px;
+            max-width: 600px;
+            width: 100%;
+            margin: 20px 0;
+        }
+        
+        h1 {
+            text-align: center;
+            color: #333;
+            margin-bottom: 30px;
+            font-size: 2.5em;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .input-section {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        
+        #numeroInput {
+            font-size: 24px;
+            padding: 15px 20px;
+            border: 3px solid #ddd;
+            border-radius: 15px;
+            text-align: center;
+            width: 250px;
+            transition: all 0.3s ease;
+            letter-spacing: 3px;
+        }
+        
+        #numeroInput:focus {
+            outline: none;
+            border-color: #667eea;
+            box-shadow: 0 0 20px rgba(102, 126, 234, 0.3);
+            transform: scale(1.05);
+        }
+        
+        .buttons {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            margin: 30px 0;
+        }
+        
+        button {
+            padding: 15px 30px;
+            font-size: 18px;
+            font-weight: bold;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        #conferirBtn {
+            background: linear-gradient(135deg, #4CAF50, #45a049);
+            color: white;
+        }
+        
+        #conferirBtn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(76, 175, 80, 0.3);
+        }
+        
+        #restartBtn {
+            background: linear-gradient(135deg, #ff6b6b, #ff5252);
+            color: white;
+        }
+        
+        #restartBtn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(255, 107, 107, 0.3);
+        }
+        
+        button:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+            transform: none !important;
+        }
+        
+        #resultado {
+            text-align: center;
+            margin: 20px 0;
+            font-size: 20px;
+            font-weight: bold;
+            padding: 15px;
+            border-radius: 10px;
+            transition: all 0.3s ease;
+        }
+        
+        .acerto {
+            background: linear-gradient(135deg, #d4edda, #c3e6cb);
+            color: #155724;
+            border: 2px solid #c3e6cb;
+        }
+        
+        .erro {
+            background: linear-gradient(135deg, #f8d7da, #f5c6cb);
+            color: #721c24;
+            border: 2px solid #f5c6cb;
+        }
+        
+        .loading {
+            color: #667eea;
+            font-style: italic;
+        }
+        
+        .historico {
+            margin-top: 40px;
+        }
+        
+        .historico h2 {
+            text-align: center;
+            color: #333;
+            margin-bottom: 20px;
+            font-size: 1.8em;
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        th, td {
+            padding: 15px;
+            text-align: center;
+            border-bottom: 1px solid #eee;
+        }
+        
+        th {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            font-weight: bold;
+            text-transform: uppercase;
+        }
+        
+        tr:hover {
+            background: #f8f9ff;
+            transform: scale(1.01);
+            transition: all 0.2s ease;
+        }
+        
+        .acerto-row {
+            background: #d4edda;
+        }
+        
+        .erro-row {
+            background: #f8d7da;
+        }
+        
+        .empty-history {
+            text-align: center;
+            color: #666;
+            font-style: italic;
+            padding: 40px;
+        }
+        
+        @media (max-width: 600px) {
+            .container {
+                padding: 20px;
+            }
+            
+            h1 {
+                font-size: 2em;
+            }
+            
+            #numeroInput {
+                width: 200px;
+                font-size: 20px;
+            }
+            
+            .buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            button {
+                width: 200px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🎯 Verificador de Números</h1>
+        
+        <div class="input-section">
+            <input type="text" id="numeroInput" placeholder="********" maxlength="8">
+        </div>
+        
+        <div class="buttons">
+            <button id="conferirBtn">Conferir</button>
+            <button id="restartBtn">Restart</button>
+        </div>
+        
+        <div id="resultado"></div>
+        
+        <div class="historico">
+            <h2>📊 Histórico (Últimas 30 tentativas)</h2>
+            <div id="tabelaHistorico">
+                <div class="empty-history">Carregando histórico...</div>
+            </div>
+        </div>
+    </div>
 
-
-	function myTxtProx(){
-    	let palavra = "";
-		while(true){
-				if (proverbs.charAt(pontointermediario) != " " && proverbs.charAt(pontointermediario) != "," && proverbs.charAt(pontointermediario) != ";" && proverbs.charAt(pontointermediario) != "."){
-					palavra = palavra + proverbs.charAt(pontointermediario);
-                    frase = frase + proverbs.charAt(pontointermediario);
-					pontointermediario = pontointermediario + 1 ;
-				}
-				else if (proverbs.charAt(pontointermediario) == ".") {
-                	palavra = palavra + proverbs.charAt(pontointermediario);
-                    frase = frase + proverbs.charAt(pontointermediario);
-                    pontointermediario = pontointermediario + 1 ;
-                    contador = contador + 1;
-                    break;
-				}
-                else {
-                	frase = frase + proverbs.charAt(pontointermediario);
-                	pontointermediario = pontointermediario + 1 ;
-                    break;
+    <script>
+        // URL do seu Google Apps Script (você precisa substituir pela URL real)
+        const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycby5DMQzFq73tujXtTD-wPcVNv8umSlgmtUbNwRnORRJAakeYHojqXUnZGIdfT34zmNmrw/exec';
+        
+        const numeroInput = document.getElementById('numeroInput');
+        const conferirBtn = document.getElementById('conferirBtn');
+        const restartBtn = document.getElementById('restartBtn');
+        const resultado = document.getElementById('resultado');
+        const tabelaHistorico = document.getElementById('tabelaHistorico');
+        
+        // Variável para armazenar o número real (não mascarado)
+        let numeroReal = '';
+        
+        // Formatar input para aceitar apenas números e mascarar com asteriscos
+        numeroInput.addEventListener('input', function(e) {
+            const inputValue = e.target.value;
+            const cursorPosition = e.target.selectionStart;
+            
+            // Se o usuário apagou caracteres
+            if (inputValue.length < numeroReal.length) {
+                numeroReal = numeroReal.slice(0, inputValue.length);
+            } 
+            // Se o usuário adicionou caracteres
+            else {
+                const newChars = inputValue.slice(numeroReal.length);
+                const numbersOnly = newChars.replace(/[^0-9]/g, '');
+                numeroReal += numbersOnly;
+            }
+            
+            // Limitar a 8 dígitos
+            numeroReal = numeroReal.slice(0, 8);
+            
+            // Mostrar asteriscos no input
+            e.target.value = '*'.repeat(numeroReal.length);
+            
+            // Restaurar posição do cursor
+            setTimeout(() => {
+                e.target.setSelectionRange(numeroReal.length, numeroReal.length);
+            }, 0);
+        });
+        
+        // Enter no input executa conferir
+        numeroInput.addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                conferir();
+            }
+        });
+        
+        // Botão conferir
+        conferirBtn.addEventListener('click', conferir);
+        
+        // Botão restart
+        restartBtn.addEventListener('click', restart);
+        
+        // Função para conferir número
+        async function conferir() {
+            const numero = numeroReal.trim();
+            
+            if (numero.length !== 8) {
+                mostrarResultado('Digite exatamente 8 dígitos!', 'erro');
+                return;
+            }
+            
+            // Desabilitar botões durante a requisição
+            conferirBtn.disabled = true;
+            restartBtn.disabled = true;
+            mostrarResultado('Verificando...', 'loading');
+            
+            try {
+                const response = await fetch(SCRIPT_URL, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        action: 'verificar',
+                        numero: numero
+                    })
+                });
+                
+                const data = await response.json();
+                
+                if (data.success) {
+                    const acertou = data.acertou;
+                    const mensagem = acertou ? '🎉 Parabéns! Você acertou!' : '❌ Número incorreto. Tente novamente!';
+                    mostrarResultado(mensagem, acertou ? 'acerto' : 'erro');
+                    
+                    // Atualizar histórico
+                    await carregarHistorico();
+                } else {
+                    mostrarResultado('Erro ao verificar. Tente novamente.', 'erro');
                 }
+                
+            } catch (error) {
+                console.error('Erro:', error);
+                mostrarResultado('Erro de conexão. Verifique sua internet.', 'erro');
+            }
+            
+            // Reabilitar botões
+            conferirBtn.disabled = false;
+            restartBtn.disabled = false;
         }
-		document.getElementById("aqui").innerHTML = palavra;
-		if (contador == 2){ //contador é quantas frases entre pontos vai mostrar
-				botaotxt.style.display = 'none';
-				botaotxtprox.style.display = 'none';
-				botaotxtresul.style.display = 'block';
-				botaorestart3.style.display = 'none';
+        
+        // Função para mostrar resultado
+        function mostrarResultado(mensagem, tipo) {
+            resultado.textContent = mensagem;
+            resultado.className = tipo;
+            resultado.style.display = 'block';
+            
+            if (tipo === 'acerto' || tipo === 'erro') {
+                resultado.style.animation = 'none';
+                setTimeout(() => {
+                    resultado.style.animation = 'pulse 0.6s ease-in-out';
+                }, 10);
+            }
         }
-	}
-	
-	function myTxtResul(){
-		document.getElementById("aqui").innerHTML = frase;
-		botaotxtresul.style.display = 'none';
-		botaorestart3.style.display = 'block';
-	}
-  </script>
+        
+        // Função restart
+        function restart() {
+            numeroInput.value = '';
+            numeroReal = '';
+            resultado.textContent = '';
+            resultado.style.display = 'none';
+            numeroInput.focus();
+        }
+        
+        // Função para carregar histórico
+        async function carregarHistorico() {
+            try {
+                const response = await fetch(SCRIPT_URL, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        action: 'historico'
+                    })
+                });
+                
+                const data = await response.json();
+                
+                if (data.success) {
+                    exibirHistorico(data.historico);
+                } else {
+                    tabelaHistorico.innerHTML = '<div class="empty-history">Erro ao carregar histórico</div>';
+                }
+                
+            } catch (error) {
+                console.error('Erro ao carregar histórico:', error);
+                tabelaHistorico.innerHTML = '<div class="empty-history">Erro ao carregar histórico</div>';
+            }
+        }
+        
+        // Função para exibir histórico na tabela
+        function exibirHistorico(historico) {
+            if (!historico || historico.length === 0) {
+                tabelaHistorico.innerHTML = '<div class="empty-history">Nenhuma tentativa ainda</div>';
+                return;
+            }
+            
+            let html = `
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Data/Hora</th>
+                            <th>Número Digitado</th>
+                            <th>Resultado</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+            `;
+            
+            historico.forEach(item => {
+                const dataFormatada = new Date(item.dataHora).toLocaleString('pt-BR');
+                const resultado = item.acertou ? '✅ Acerto' : '❌ Erro';
+                const classe = item.acertou ? 'acerto-row' : 'erro-row';
+                
+                html += `
+                    <tr class="${classe}">
+                        <td>${dataFormatada}</td>
+                        <td>${item.numero}</td>
+                        <td>${resultado}</td>
+                    </tr>
+                `;
+            });
+            
+            html += `
+                    </tbody>
+                </table>
+            `;
+            
+            tabelaHistorico.innerHTML = html;
+        }
+        
+        // Carregar histórico ao carregar a página
+        document.addEventListener('DOMContentLoaded', function() {
+            carregarHistorico();
+            numeroInput.focus();
+        });
+        
+        // Adicionar animação de pulse
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes pulse {
+                0% { transform: scale(1); }
+                50% { transform: scale(1.05); }
+                100% { transform: scale(1); }
+            }
+        `;
+        document.head.appendChild(style);
+    </script>
 </body>
-
 </html>
